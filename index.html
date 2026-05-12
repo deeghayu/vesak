@@ -65,6 +65,23 @@
     <footer>
         <p>Created by M.U.R.D.D. Fonseka</p>
     </footer>
+<!-- සයිට් එකේ අනිත් හැමදේම මෙතන තියෙනවා -->
 
+    <script>
+        var audio = document.getElementById("vesakMusic");
+        var btn = document.getElementById("musicBtn");
+
+        function toggleMusic() {
+            if (audio.paused) {
+                audio.play();
+                btn.innerHTML = "⏸️ Pause Music";
+            } else {
+                audio.pause();
+                btn.innerHTML = "🎵 Play Music";
+            }
+        }
+    </script>
+</body>
+</html>
 </body>
 </html>
