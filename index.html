@@ -3,71 +3,207 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>සිරි වෙසක් මංගල්‍යය</title>
-    <link rel="stylesheet" href="style.css">
+    <title>සිරි වෙසක් මංගල්‍යය - 2026</title>
+    <style>
+        /* CSS කොටස - සයිට් එක ලස්සන කිරීමට */
+        @import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;700&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: #0d0d26; /* තද නිල් පසුබිම */
+            color: #fff;
+            font-family: 'Abhaya Libre', serif;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 90vh;
+            background: url('hero.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(13, 13, 38, 0.3), #0d0d26);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            color: #ffd700;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+            margin-bottom: 10px;
+            animation: fadeInDown 1.5s ease-out;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            color: #f0f0f0;
+            animation: fadeInUp 2s ease-out;
+        }
+
+        /* තෙමඟුල විස්තර Cards */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            padding: 50px 20px;
+        }
+
+        .event-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            width: 300px;
+            transition: 0.4s;
+            backdrop-filter: blur(10px);
+        }
+
+        .event-card:hover {
+            transform: translateY(-15px);
+            border-color: #ffd700;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+        }
+
+        .icon { font-size: 4rem; margin-bottom: 15px; }
+        h2 { color: #ffd700; }
+        p { line-height: 1.6; font-size: 1.1rem; }
+
+        /* වෙසක් කූඩු සහ සුබපැතුම */
+        .wishes-section {
+            padding: 80px 20px;
+            background: linear-gradient(#0d0d26, #1a1a3d);
+        }
+
+        .lantern-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .lantern {
+            font-size: 4rem;
+            animation: swing 3s infinite ease-in-out;
+        }
+
+        /* Music Player Button */
+        .music-player {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+
+        #musicBtn {
+            background: #ffd700;
+            color: #0d0d26;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+            font-size: 1rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes swing {
+            0%, 100% { transform: rotate(-10deg); }
+            50% { transform: rotate(10deg); }
+        }
+
+        footer {
+            padding: 40px;
+            background: #050517;
+            border-top: 1px solid rgba(255, 215, 0, 0.1);
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .hero { height: 60vh; }
+        }
+    </style>
 </head>
 <body>
 
-    <header>
-        <h1>සිරි වෙසක් මංගල්‍යය</h1>
-        <p>සම්බුදු තෙමඟුල ගෞරවයෙන් සමරමු</p>
-    </header>
-
-  <!-- Hero Section -->
-<section class="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-        <h1 class="fade-in">ලොවටම ආලෝකය වූ</h1>
-        <h2 class="fade-in-delayed">සම්බුදු තෙමඟුල</h2>
-        <p class="fade-in-delayed-2">වෙසක් පුන් පොහෝ දිනක අසිරිමත් මතකයන් අවදි කරමු...</p>
-    </div>
-</section>
-<!-- Background Music Section -->
-<div class="music-player">
-    <button id="musicBtn" onclick="toggleMusic()">🎵 Play Music</button>
-    <audio id="vesakMusic" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-        <!-- පස්සේ ඔයාට කැමති සින්දුවක ලින්ක් එකක් මෙතන src එකට දාන්න පුළුවන් -->
-    </audio>
-</div>
-    <!-- 2. Themagula Description -->
-    <main class="container">
-        <section class="event-card">
-            <div class="icon">🌸</div>
-            <h2>සිදුහත් කුමරුගේ උපත</h2>
-            <p>වෙසක් පුන් පොහෝ දිනක ලුම්බිණි සල් උයනේදී සිදුහත් කුමරුගේ උපත සිදු විය.</p>
-        </section>
-
-        <section class="event-card">
-            <div class="icon">🧘</div>
-            <h2>බුදුබවට පත්වීම</h2>
-            <p>බුද්ධගයාවේ බෝධි මූලයේදී සියලු කෙලෙසුන් නසා උතුම් සම්මා සම්බුද්ධත්වයට පත්වීම.</p>
-        </section>
-
-        <section class="event-card">
-            <div class="icon">☸️</div>
-            <h2>මහා පිරිනිවන් පෑම</h2>
-            <p>කුසිනාරා නුවර මල්ල රජදරුවන්ගේ සල් උයනේදී වෙසක් පොහෝ දිනක පිරිනිවන් පෑම.</p>
-        </section>
-    </main>
-
-    <!-- 3. Vesak Lantern & Wish Section -->
-    <section class="wishes-section">
-        <div class="lantern-box">
-            <div class="lantern">🏮</div>
-            <div class="lantern">🏮</div>
-            <div class="lantern">🏮</div>
-        </div>
-        <div class="wish-text">
-            <h2>සැමට පින්බර වෙසක් මංගල්‍යයක් වේවා!</h2>
-            <p>සම්බුදු ගුණයෙන් මුළු ලොවම ආලෝකමත් වේවා!</p>
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>සම්බුදු තෙමඟුල</h1>
+            <p>ලොවටම ශාන්තිය උදා වූ ඒ අසිරිමත් වෙසක් මංගල්‍යය</p>
         </div>
     </section>
 
+    <main class="container">
+        <div class="event-card">
+            <div class="icon">🌸</div>
+            <h2>උපත</h2>
+            <p>ලුම්බිණි සල් උයනේදී සත් පියුම් මතින් වැඩම කරමින් සිදුහත් කුමරුගේ උපත සිදු විය.</p>
+        </div>
+
+        <div class="event-card">
+            <div class="icon">🧘</div>
+            <h2>බුදුවීම</h2>
+            <p>ගයා ශීර්ෂයේ බෝධි මූලයේදී සියලු කෙලෙසුන් නසා උතුම් සම්මා සම්බුද්ධත්වයට පත්වීම.</p>
+        </div>
+
+        <div class="event-card">
+            <div class="icon">☸️</div>
+            <h2>පිරිනිවීම</h2>
+            <p>කුසිනාරා නුවර මල්ල රජදරුවන්ගේ උපවත්තන සල් උයනේදී මහා පිරිනිවන් පෑම.</p>
+        </div>
+    </main>
+
+    <section class="wishes-section">
+        <div class="lantern-container">
+            <div class="lantern">🏮</div>
+            <div class="lantern">🏮</div>
+            <div class="lantern image-lantern">🏮</div>
+        </div>
+        <h2 style="font-size: 2.5rem; text-shadow: 0 0 15px #ffd700;">පින්බර වෙසක් මංගල්‍යයක් වේවා!</h2>
+        <p>සැමට සාමය, සතුට සහ සැනසීම පිරි සුබ වෙසක් උත්සවයක් වේවා!</p>
+    </section>
+
+    <div class="music-player">
+        <button id="musicBtn" onclick="toggleMusic()">🎵 Play Vesak Music</button>
+        <audio id="vesakMusic" loop>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
     <footer>
-        <p>Created by M.U.R.D.D. Fonseka</p>
+        <p>&copy; 2026 Developed by M.U.R.D.D. Fonseka | Vesak Digital Celebration</p>
     </footer>
-<!-- සයිට් එකේ අනිත් හැමදේම මෙතන තියෙනවා -->
 
     <script>
         var audio = document.getElementById("vesakMusic");
@@ -79,11 +215,10 @@
                 btn.innerHTML = "⏸️ Pause Music";
             } else {
                 audio.pause();
-                btn.innerHTML = "🎵 Play Music";
+                btn.innerHTML = "🎵 Play Vesak Music";
             }
         }
     </script>
-</body>
-</html>
+
 </body>
 </html>
