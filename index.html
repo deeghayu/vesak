@@ -5,27 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>සිරි වෙසක් මංගල්‍යය - 2026</title>
     <style>
-        /* CSS කොටස - සයිට් එක ලස්සන කිරීමට */
         @import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;700&display=swap');
 
         body {
             margin: 0;
             padding: 0;
-            background: #0d0d26; /* තද නිල් පසුබිම */
+            background: #0d0d26;
             color: #fff;
             font-family: 'Abhaya Libre', serif;
             text-align: center;
             overflow-x: hidden;
         }
 
-        /* Hero Section */
+        /* Hero Section with Video Background */
         .hero {
             position: relative;
-            height: 90vh;
-            background: url('hero.jpg') no-repeat center center/cover;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
+        }
+
+        #bgVideo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: 0;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
         }
 
         .hero-overlay {
@@ -34,7 +46,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(13, 13, 38, 0.3), #0d0d26);
+            background: rgba(0, 0, 0, 0.5); /* Video එක උඩ අකුරු පේන්න පොඩි කළු ලේයර් එකක් */
+            z-index: 1;
         }
 
         .hero-content {
@@ -46,23 +59,24 @@
             font-size: 4rem;
             color: #ffd700;
             text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
-            margin-bottom: 10px;
+            margin: 0;
             animation: fadeInDown 1.5s ease-out;
         }
 
         .hero-content p {
             font-size: 1.5rem;
             color: #f0f0f0;
-            animation: fadeInUp 2s ease-out;
+            animation: fadeInUp 2.5s ease-out;
         }
 
-        /* තෙමඟුල විස්තර Cards */
+        /* Sections and Cards */
         .container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 25px;
-            padding: 50px 20px;
+            padding: 80px 20px;
+            background: linear-gradient(to bottom, #0d0d26, #16163a);
         }
 
         .event-card {
@@ -78,50 +92,34 @@
         .event-card:hover {
             transform: translateY(-15px);
             border-color: #ffd700;
-            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
         }
 
         .icon { font-size: 4rem; margin-bottom: 15px; }
-        h2 { color: #ffd700; }
-        p { line-height: 1.6; font-size: 1.1rem; }
+        h2 { color: #ffd700; margin-bottom: 15px; }
 
-        /* වෙසක් කූඩු සහ සුබපැතුම */
+        /* Wishes Section with Swinging Lanterns */
         .wishes-section {
-            padding: 80px 20px;
-            background: linear-gradient(#0d0d26, #1a1a3d);
+            padding: 100px 20px;
+            background: #0d0d26;
         }
 
         .lantern-container {
             display: flex;
             justify-content: center;
-            gap: 40px;
-            margin-bottom: 30px;
+            gap: 50px;
+            margin-bottom: 40px;
         }
 
         .lantern {
-            font-size: 4rem;
+            font-size: 5rem;
             animation: swing 3s infinite ease-in-out;
+            text-shadow: 0 0 20px #ff4500;
+            display: inline-block;
         }
 
-        /* Music Player Button */
-        .music-player {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 1000;
-        }
-
-        #musicBtn {
-            background: #ffd700;
-            color: #0d0d26;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 30px;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
-            font-size: 1rem;
-        }
+        .lantern:nth-child(2) { animation-delay: 0.5s; }
+        .lantern:nth-child(3) { animation-delay: 1s; }
 
         /* Animations */
         @keyframes fadeInDown {
@@ -135,22 +133,22 @@
         }
 
         @keyframes swing {
-            0%, 100% { transform: rotate(-10deg); }
-            50% { transform: rotate(10deg); }
+            0%, 100% { transform: rotate(-12deg); }
+            50% { transform: rotate(12deg); }
         }
 
         footer {
-            padding: 40px;
+            padding: 50px;
             background: #050517;
             border-top: 1px solid rgba(255, 215, 0, 0.1);
-            font-size: 0.9rem;
             color: #888;
         }
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .hero-content h1 { font-size: 2.5rem; }
-            .hero { height: 60vh; }
+            .hero-content p { font-size: 1.1rem; }
+            .lantern { font-size: 3.5rem; }
         }
     </style>
 </head>
@@ -158,9 +156,12 @@
 
     <section class="hero">
         <div class="hero-overlay"></div>
+        <video autoplay muted loop playsinline id="bgVideo">
+            <source src="vesak-video.mp4" type="video/mp4">
+        </video>
         <div class="hero-content">
             <h1>සම්බුදු තෙමඟුල</h1>
-            <p>ලොවටම ශාන්තිය උදා වූ ඒ අසිරිමත් වෙසක් මංගල්‍යය</p>
+            <p>සංවේදී කවිපෙළ සමඟින් වෙසක් අසිරිය විඳිමු...</p>
         </div>
     </section>
 
@@ -170,17 +171,15 @@
             <h2>උපත</h2>
             <p>ලුම්බිණි සල් උයනේදී සත් පියුම් මතින් වැඩම කරමින් සිදුහත් කුමරුගේ උපත සිදු විය.</p>
         </div>
-
         <div class="event-card">
             <div class="icon">🧘</div>
             <h2>බුදුවීම</h2>
-            <p>ගයා ශීර්ෂයේ බෝධි මූලයේදී සියලු කෙලෙසුන් නසා උතුම් සම්මා සම්බුද්ධත්වයට පත්වීම.</p>
+            <p>බුද්ධගයා බෝධි මූලයේදී සියලු කෙලෙසුන් නසා උතුම් සම්මා සම්බුද්ධත්වයට පත්වීම.</p>
         </div>
-
         <div class="event-card">
             <div class="icon">☸️</div>
             <h2>පිරිනිවීම</h2>
-            <p>කුසිනාරා නුවර මල්ල රජදරුවන්ගේ උපවත්තන සල් උයනේදී මහා පිරිනිවන් පෑම.</p>
+            <p>කුසිනාරා නුවර උපවත්තන සල් උයනේදී ලොවට අනිත්‍යය පසක් කරමින් පිරිනිවන් පෑම.</p>
         </div>
     </main>
 
@@ -188,37 +187,15 @@
         <div class="lantern-container">
             <div class="lantern">🏮</div>
             <div class="lantern">🏮</div>
-            <div class="lantern image-lantern">🏮</div>
+            <div class="lantern">🏮</div>
         </div>
-        <h2 style="font-size: 2.5rem; text-shadow: 0 0 15px #ffd700;">පින්බර වෙසක් මංගල්‍යයක් වේවා!</h2>
-        <p>සැමට සාමය, සතුට සහ සැනසීම පිරි සුබ වෙසක් උත්සවයක් වේවා!</p>
+        <h2 style="font-size: 3rem; text-shadow: 0 0 15px #ffd700;">පින්බර වෙසක් මංගල්‍යයක් වේවා!</h2>
+        <p>සම්බුදු ගුණයෙන් මුළු ලොවම ආලෝකමත් වේවා!</p>
     </section>
 
-    <div class="music-player">
-        <button id="musicBtn" onclick="toggleMusic()">🎵 Play Vesak Music</button>
-        <audio id="vesakMusic" loop>
-            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-        </audio>
-    </div>
-
     <footer>
-        <p>&copy; 2026 Developed by M.U.R.D.D. Fonseka | Vesak Digital Celebration</p>
+        <p>&copy; 2026 Developed by M.U.R.D.D. Fonseka | Vesak Celebration</p>
     </footer>
-
-    <script>
-        var audio = document.getElementById("vesakMusic");
-        var btn = document.getElementById("musicBtn");
-
-        function toggleMusic() {
-            if (audio.paused) {
-                audio.play();
-                btn.innerHTML = "⏸️ Pause Music";
-            } else {
-                audio.pause();
-                btn.innerHTML = "🎵 Play Vesak Music";
-            }
-        }
-    </script>
 
 </body>
 </html>
