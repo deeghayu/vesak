@@ -17,15 +17,14 @@
             overflow-x: hidden;
         }
 
-        /* Hero Section with YouTube Background */
+        /* Hero Section with Video Background */
         .hero {
             position: relative;
             height: 100vh;
-            width: 100%;
-            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
         }
 
         .video-background {
@@ -35,14 +34,14 @@
             width: 100%;
             height: 100%;
             z-index: 0;
-            pointer-events: none; /* වීඩියෝ එක ක්ලික් කරන්න බැරි වෙන්න */
+            pointer-events: none;
         }
 
         .video-background iframe {
             width: 100vw;
-            height: 56.25vw; /* 16:9 ratio */
+            height: 56.25vw;
             min-height: 100vh;
-            min-width: 177.77vh; /* 16:9 ratio */
+            min-width: 177.77vh;
             position: absolute;
             top: 50%;
             left: 50%;
@@ -55,7 +54,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(5, 5, 23, 0.6); /* වීඩියෝ එක මඳක් අඳුරු කරන්න */
+            background: rgba(5, 5, 23, 0.6);
             z-index: 1;
         }
 
@@ -68,12 +67,27 @@
             font-size: 5rem;
             color: #ffd700;
             text-shadow: 0 0 30px rgba(255, 215, 0, 0.7);
-            animation: glowText 3s infinite alternate;
+            margin-bottom: 20px;
         }
 
-        @keyframes glowText {
-            from { text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
-            to { text-shadow: 0 0 40px rgba(255, 215, 0, 1); }
+        /* Music Button Styling */
+        .music-btn {
+            background: rgba(255, 215, 0, 0.2);
+            border: 2px solid #ffd700;
+            color: #ffd700;
+            padding: 12px 25px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s;
+            backdrop-filter: blur(5px);
+            font-family: 'Abhaya Libre', serif;
+        }
+
+        .music-btn:hover {
+            background: #ffd700;
+            color: #050517;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
         }
 
         .container {
@@ -92,12 +106,6 @@
             padding: 30px;
             width: 300px;
             transition: 0.4s;
-            backdrop-filter: blur(10px);
-        }
-
-        .event-card:hover {
-            transform: translateY(-10px);
-            border-color: #ffd700;
         }
 
         footer {
@@ -106,24 +114,27 @@
             color: #666;
             border-top: 1px solid rgba(255, 215, 0, 0.1);
         }
-
-        @media (max-width: 768px) {
-            .hero-content h1 { font-size: 3rem; }
-        }
     </style>
 </head>
 <body>
 
     <section class="hero">
         <div class="video-background">
-            <!-- YouTube video එක මෙතන තියෙනවා. mute=1 නිසා autoplay වැඩ කරනවා. -->
-            <iframe src="https://www.youtube.com/embed/SBRWnqemVJU?autoplay=1&mute=1&loop=1&playlist=SBRWnqemVJU&controls=0&showinfo=0&rel=0&modestbranding=1" 
+            <!-- Background Video: සංවේදී කවිපෙළ -->
+            <iframe id="heroVideo" src="https://www.youtube.com/embed/SBRWnqemVJU?autoplay=1&mute=1&loop=1&playlist=SBRWnqemVJU&controls=0&showinfo=0" 
                     frameborder="0" allow="autoplay; encrypted-media"></iframe>
         </div>
         <div class="hero-overlay"></div>
+        
         <div class="hero-content">
             <h1>සම්බුදු තෙමඟුල</h1>
-            <p>සංවේදී කවිපෙළ සමඟින් වෙසක් අසිරිය විඳිමු...</p>
+            <p style="font-size: 1.5rem; margin-bottom: 30px;">වෙසක් අසිරියෙන් මුළු ලොවම ආලෝකමත් වේවා!</p>
+            
+            <!-- Music Toggle Button -->
+            <button class="music-btn" onclick="toggleMusic()">🎶 සින්දුව වාදනය කරන්න</button>
+            
+            <!-- Hidden Music Iframe (බුදු කරුණා දෑස තෙමී) -->
+            <div id="musicPlayer" style="display:none;"></div>
         </div>
     </section>
 
@@ -145,6 +156,25 @@
     <footer>
         <p>&copy; 2026 Developed by M.U.R.D.D. Fonseka | Ziyumi Beat</p>
     </footer>
+
+    <script>
+        let isPlaying = false;
+        function toggleMusic() {
+            const playerDiv = document.getElementById('musicPlayer');
+            const btn = document.querySelector('.music-btn');
+            
+            if (!isPlaying) {
+                // සින්දුව ලෝඩ් කිරීම (YouTube ID: 7Jw9BAZh45w)
+                playerDiv.innerHTML = `<iframe width="1" height="1" src="https://www.youtube.com/embed/7Jw9BAZh45w?autoplay=1" frameborder="0" allow="autoplay"></iframe>`;
+                btn.innerHTML = "⏸️ සින්දුව නවත්වන්න";
+                isPlaying = true;
+            } else {
+                playerDiv.innerHTML = "";
+                btn.innerHTML = "🎶 සින්දුව වාදනය කරන්න";
+                isPlaying = false;
+            }
+        }
+    </script>
 
 </body>
 </html>
