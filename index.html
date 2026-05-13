@@ -17,10 +17,13 @@
 
         section { min-height: 100vh; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; padding: 40px 0; }
 
-        /* Hero Image - Online Link */
-        .hero { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('https://r2.erweima.ai/i/p/r2/1/1233076717540237312/0L9-lFpMQSidOsh0xH0Yig.png') center/cover; text-align: center; }
+        /* Hero Image - Verbatim filename: hero.jpg.png */
+        .hero { 
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('hero.jpg.png') center/cover; 
+            text-align: center; 
+        }
 
-        .video-sec { background: #0a0a20; }
+        .video-sec { background: #0a0a20; padding: 60px 0; }
         .video-container {
             width: 90%; max-width: 800px;
             aspect-ratio: 16/9;
@@ -28,108 +31,109 @@
             border-radius: 20px;
             overflow: hidden;
             border: 2px solid #ffd700;
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
             display: flex; align-items: center; justify-content: center;
         }
         iframe { width: 100%; height: 100%; border: none; }
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; width: 90%; max-width: 1200px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; width: 90%; max-width: 1200px; }
         .card {
-            height: 400px; border-radius: 20px; overflow: hidden; cursor: pointer;
-            border: 1px solid rgba(255, 215, 0, 0.3); display: flex; flex-direction: column;
+            height: 450px; border-radius: 20px; overflow: hidden; cursor: pointer;
+            border: 1px solid rgba(255, 215, 0, 0.2); display: flex; flex-direction: column;
             justify-content: flex-end; padding: 25px; transition: 0.4s;
         }
-        .card:hover { transform: scale(1.03); border-color: #ffd700; }
+        .card:hover { transform: translateY(-10px); border-color: #ffd700; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
         
-        /* Online Image Links for Cards */
-        .c1 { background: linear-gradient(to top, #000, transparent), url('https://r2.erweima.ai/i/p/r2/1/1233076412151050240/6Vv9m1mSR6aZc6e4Z6T7Ww.png') center/cover; }
-        .c2 { background: linear-gradient(to top, #000, transparent), url('https://r2.erweima.ai/i/p/r2/1/1233075253810147328/m2eL9S9TReGz6e4Z6T7Ww.png') center/cover; }
-        .c3 { background: linear-gradient(to top, #000, transparent), url('https://r2.erweima.ai/i/p/r2/1/1233075846206103552/bFpMQSidOsh0xH0Yig8T7Ww.png') center/cover; }
+        /* Card Images - Verbatim filenames */
+        .c1 { background: linear-gradient(to top, #000, transparent), url('images.jpg.png') center/cover; }
+        .c2 { background: linear-gradient(to top, #000, transparent), url('z_p08-Sambuddha_2.jpg.png') center/cover; }
 
         #details-page { position: fixed; top: 0; left: 100%; width: 100%; height: 100%; background: #050517; z-index: 1000; transition: 0.5s; overflow-y: auto; }
         #details-page.active { left: 0; }
-        .details-banner { width: 100%; height: 400px; background-size: cover; background-position: center; border-bottom: 3px solid #ffd700; position: relative; }
-        .details-banner::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, #050517, transparent); }
-        .details-content { max-width: 850px; margin: 30px auto; padding: 0 25px; }
-        .details-content h1 { color: #ffd700; font-size: 2.8rem; margin-bottom: 20px; }
-        .details-content p { font-size: 1.25rem; line-height: 1.9; color: #eee; white-space: pre-line; }
+        .details-banner { width: 100%; height: 450px; background-size: cover; background-position: center; border-bottom: 3px solid #ffd700; position: relative; }
+        .details-content { max-width: 850px; margin: 40px auto; padding: 0 25px; }
+        .details-content h1 { color: #ffd700; font-size: 3rem; margin-bottom: 20px; }
+        .details-content p { font-size: 1.3rem; line-height: 1.9; color: #ddd; white-space: pre-line; }
 
-        .btn { padding: 15px 35px; border-radius: 50px; border: none; cursor: pointer; font-weight: bold; font-family: 'Abhaya Libre', serif; margin: 10px; transition: 0.3s; }
-        .gold { background: #ffd700; color: #000; }
+        .btn { padding: 15px 40px; border-radius: 50px; border: none; cursor: pointer; font-weight: bold; font-family: 'Abhaya Libre', serif; font-size: 1.1rem; margin: 10px; transition: 0.3s; }
+        .gold { background: #ffd700; color: #000; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3); }
         .outline { background: transparent; color: #ffd700; border: 2px solid #ffd700; }
+        .gold:hover { background: #fff; transform: scale(1.05); }
 
-        footer { text-align: center; padding: 50px; color: #555; background: #02020a; border-top: 1px solid #111; }
+        footer { text-align: center; padding: 60px; color: #666; background: #02020a; border-top: 1px solid #111; letter-spacing: 1px; }
     </style>
 </head>
 <body>
 
+    <!-- මුල් පිටුව -->
     <section class="hero">
-        <h1 style="font-size: 4.5rem; color: #ffd700; margin-bottom: 10px; text-shadow: 0 0 20px rgba(0,0,0,0.8);">සිරි වෙසක් මංගල්‍යය</h1>
-        <p style="font-size: 1.6rem; text-shadow: 0 0 10px rgba(0,0,0,0.8);">2570 සම්බුදු තෙමඟුල නිමිත්තෙනි</p>
-        <button class="btn gold" onclick="playVideo()">වීඩියෝව නරඹන්න 🎬</button>
-        <button class="btn outline" onclick="document.getElementById('facts').scrollIntoView()">විස්තර කියවන්න 📖</button>
-    </section>
-
-    <section id="video-sec" class="video-sec">
-        <h2 style="color: #ffd700; margin-bottom: 30px;">තෙමඟුල් වෙසක් උපහාර</h2>
-        <div class="video-container" id="player">
-            <p style="color: #666;">වීඩියෝව නැරඹීමට ඉහළ ඇති බටන් එක ක්ලික් කරන්න.</p>
+        <h1 style="font-size: 4.5rem; color: #ffd700; margin-bottom: 10px; text-shadow: 0 5px 15px rgba(0,0,0,0.9);">සිරි වෙසක් මංගල්‍යය</h1>
+        <p style="font-size: 1.8rem; text-shadow: 0 2px 10px rgba(0,0,0,0.9);">සම්බුදු තෙමඟුල නිමිත්තෙන් කෙරෙන උපහාරයකි</p>
+        <div style="margin-top: 20px;">
+            <button class="btn gold" onclick="playVideo()">වීඩියෝව නරඹන්න 🎬</button>
+            <button class="btn outline" onclick="document.getElementById('facts').scrollIntoView()">විස්තර කියවන්න 📖</button>
         </div>
     </section>
 
-    <section id="facts" style="background:#050517; padding: 80px 0;">
+    <!-- වීඩියෝ අංශය -->
+    <section id="video-sec" class="video-sec">
+        <h2 style="color: #ffd700; margin-bottom: 40px; font-size: 2.5rem;">වෙසක් උපහාර වීඩියෝව</h2>
+        <div class="video-container" id="player">
+            <p style="color: #888;">නැරඹීමට ඉහළ ඇති බටන් එක ක්ලික් කරන්න.</p>
+        </div>
+        <p style="margin-top: 20px; color: #ffd700; opacity: 0.8;">* වීඩියෝව තත්පර 29 සිට ස්වයංක්‍රීයව ආරම්භ වේ.</p>
+    </section>
+
+    <!-- තොරතුරු අංශය -->
+    <section id="facts">
         <center>
-            <h2 style="color: #ffd700; font-size: 2.8rem; margin-bottom: 50px;">සම්බුදු තෙමඟුලේ විස්තර</h2>
+            <h2 style="color: #ffd700; font-size: 2.8rem; margin-bottom: 60px;">සම්බුදු තෙමඟුලේ අසිරිය</h2>
             <div class="grid">
                 <div class="card c1" onclick="showDetails('birth')">
-                    <h3 style="font-size: 1.8rem; text-shadow: 2px 2px 5px #000;">බෝසත් කුමරුගේ උත්පත්තිය</h3>
-                    <div style="background:#ffd700; color:#000; padding:8px 20px; border-radius:25px; width:fit-content; font-weight:bold;">කියවන්න</div>
+                    <h3 style="font-size: 2rem; text-shadow: 2px 2px 10px #000;">සම්මා සම්බුද්ධත්වය</h3>
+                    <div style="background:#ffd700; color:#000; padding:10px 25px; border-radius:30px; width:fit-content; font-weight:bold;">විස්තර කියවන්න</div>
                 </div>
-                <div class="card c2" onclick="showDetails('enlighten')">
-                    <h3 style="font-size: 1.8rem; text-shadow: 2px 2px 5px #000;">සම්මා සම්බුද්ධත්වය</h3>
-                    <div style="background:#ffd700; color:#000; padding:8px 20px; border-radius:25px; width:fit-content; font-weight:bold;">කියවන්න</div>
-                </div>
-                <div class="card c3" onclick="showDetails('death')">
-                    <h3 style="font-size: 1.8rem; text-shadow: 2px 2px 5px #000;">මහා පිරිනිවන් පෑම</h3>
-                    <div style="background:#ffd700; color:#000; padding:8px 20px; border-radius:25px; width:fit-content; font-weight:bold;">කියවන්න</div>
+                <div class="card c2" onclick="showDetails('death')">
+                    <h3 style="font-size: 2rem; text-shadow: 2px 2px 10px #000;">මහා පිරිනිවන් පෑම</h3>
+                    <div style="background:#ffd700; color:#000; padding:10px 25px; border-radius:30px; width:fit-content; font-weight:bold;">විස්තර කියවන්න</div>
                 </div>
             </div>
         </center>
     </section>
 
+    <!-- විස්තර පෙන්වන පිටුව -->
     <div id="details-page">
-        <button class="btn gold" style="position:fixed; top:20px; left:20px; z-index:1100;" onclick="hideDetails()">⬅ ආපසු</button>
+        <button class="btn gold" style="position:fixed; top:30px; left:30px; z-index:1100;" onclick="hideDetails()">⬅ ආපසු පිටුවට</button>
         <div id="det-banner" class="details-banner"></div>
         <div class="details-content">
             <h1 id="det-title"></h1>
+            <hr border="0" style="height:2px; background:#ffd700; width:100px; margin: 20px 0;">
             <p id="det-text"></p>
         </div>
     </div>
 
-    <footer>Developed by M.U.R.D.D. Fonseka | Ziyumi Beat Studio 2026</footer>
+    <footer>
+        Developed by M.U.R.D.D. Fonseka<br>
+        <span style="font-size: 0.9rem;">G.C.C. Media unit  & I.C.T  team </span>
+    </footer>
 
     <script>
         const data = {
             birth: { 
-                title: "බෝසත් කුමරුගේ උත්පත්තිය", 
-                img: "https://r2.erweima.ai/i/p/r2/1/1233076412151050240/6Vv9m1mSR6aZc6e4Z6T7Ww.png", 
-                text: "සිදුහත් කුමරු වෙසක් පුර පසළොස්වක පොහොය දිනක ලුම්බිණි සල් උයනේදී උපත ලැබීය." 
-            },
-            enlighten: { 
-                title: "සම්මා සම්බුද්ධත්වය", 
-                img: "https://r2.erweima.ai/i/p/r2/1/1233075253810147328/m2eL9S9TReGz6e4Z6T7Ww.png", 
-                text: "ගයා ශීර්ෂයේ බෝධි මූලයේදී වෙසක් පුර පසළොස්වක පොහෝ දිනක උතුම් බුද්ධත්වය ලැබූ සේක." 
+                title: "උතුම් සම්මා සම්බුද්ධත්වය", 
+                img: "images.jpg.png", 
+                text: "වෙසක් පුර පසළොස්වක පොහෝ දිනක බුද්ධගයාවේදී බෝධි මූලයේදී සියලු කෙලෙසුන් නසා උතුම් සම්මා සම්බුද්ධත්වය ලැබූ සේක. මෙය ලෝකයටම උතුම් වූ ශාන්තියක් උදා කළ අවස්ථාවකි." 
             },
             death: { 
                 title: "මහා පිරිනිවන් පෑම", 
-                img: "https://r2.erweima.ai/i/p/r2/1/1233075846206103552/bFpMQSidOsh0xH0Yig8T7Ww.png", 
-                text: "කුසිනාරා නුවර උපවත්තන සල් උයනේදී වෙසක් පුර පසළොස්වක පොහෝ දිනක බුදුරජාණන් වහන්සේ පිරිනිවන් පෑ සේක." 
+                img: "z_p08-Sambuddha_2.jpg.png", 
+                text: "කුසිනාරා නුවර උපවත්තන සල් උයනේදී වෙසක් පුර පසළොස්වක පොහෝ දිනක බුදුරජාණන් වහන්සේ පිරිනිවන් පෑ සේක.\n\nඅවසාන බුදු වදන: 'මහණෙනි, සියලු සංස්කාර ධර්මයෝ නැසෙන සුලුය. අප්‍රමාදීව කුසල් දමෙහි යෙදෙන්න.'" 
             }
         };
 
         function playVideo() {
             const player = document.getElementById('player');
-            // වීඩියෝ එක හරියටම තත්පර 29 සිට ආරම්භ වේ (start=29)
+            // start=29 සහ autoplay=1 මගින් තත්පර 29 සිට ඉබේම ප්ලේ වේ.
             player.innerHTML = `<iframe src="https://www.youtube.com/embed/SBRWnqemVJU?start=29&autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
             document.getElementById('video-sec').scrollIntoView();
         }
@@ -137,7 +141,7 @@
         function showDetails(key) {
             document.getElementById('det-title').innerText = data[key].title;
             document.getElementById('det-text').innerText = data[key].text;
-            document.getElementById('det-banner').style.backgroundImage = `url('${data[key].img}')`;
+            document.getElementById('det-banner').style.backgroundImage = `linear-gradient(to top, #050517, transparent), url('${data[key].img}')`;
             document.getElementById('details-page').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
