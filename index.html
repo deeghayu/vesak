@@ -43,7 +43,7 @@
         }
         .card:hover { transform: scale(1.03); border-color: #ffd700; }
         
-        /* Card Images */
+        /* Card Backgrounds */
         .c1 { background: linear-gradient(to top, #000, transparent), url('birth.jpg') center/cover; }
         .c2 { background: linear-gradient(to top, #000, transparent), url('images.jpg') center/cover; }
         .c3 { background: linear-gradient(to top, #000, transparent), url('z_p08-Sambuddha_2.jpg') center/cover; }
@@ -73,7 +73,6 @@
 </head>
 <body>
 
-    <!-- Home -->
     <section class="hero">
         <h1 style="font-size: 4.5rem; color: #ffd700; margin: 0;">සිරි වෙසක් මංගල්‍යය</h1>
         <p style="font-size: 1.6rem;">2570 සම්බුදු තෙමඟුල නිමිත්තෙනි</p>
@@ -81,17 +80,15 @@
         <button class="btn outline" onclick="document.getElementById('facts').scrollIntoView()">විස්තර කියවන්න 📖</button>
     </section>
 
-    <!-- Video Section (Now a standalone player) -->
     <section id="video-section" class="video-sec">
         <h2 style="color: #ffd700; margin-bottom: 30px;">තෙමඟුල් වෙසක් උපහාර</h2>
         <div class="video-box">
-            <!-- YouTube Video with Audio Enabled -->
-            <iframe src="https://www.youtube.com/embed/SBRWnqemVJU" allowfullscreen allow="autoplay"></iframe>
+            <!-- YouTube Video updated to start at 29 seconds -->
+            <iframe src="https://www.youtube.com/embed/SBRWnqemVJU?start=29" allowfullscreen allow="autoplay"></iframe>
         </div>
-        <p style="margin-top: 20px; color: #aaa;">සද්දය ඇසීමට වීඩියෝවේ Unmute හෝ Play කරන්න.</p>
+        <p style="margin-top: 20px; color: #aaa;">තත්පර 29 සිට වීඩියෝව ආරම්භ වේ.</p>
     </section>
 
-    <!-- Facts Grid -->
     <section id="facts" class="facts-page">
         <h2 style="color: #ffd700; font-size: 2.8rem; margin-bottom: 50px;">සම්බුදු තෙමඟුලේ විස්තර</h2>
         <div class="grid">
@@ -110,7 +107,6 @@
         </div>
     </section>
 
-    <!-- Details Page -->
     <div id="details-page">
         <button class="back-btn" onclick="hideDetails()">⬅ ආපසු</button>
         <div id="det-banner" class="details-banner"></div>
