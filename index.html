@@ -17,7 +17,7 @@
             overflow-x: hidden;
         }
 
-        /* Hero Section with Video Background */
+        /* Hero Section with Drive Video Background */
         .hero {
             position: relative;
             height: 100vh;
@@ -46,7 +46,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5); /* Video එක උඩ අකුරු පේන්න පොඩි කළු ලේයර් එකක් */
+            background: rgba(0, 0, 0, 0.4);
             z-index: 1;
         }
 
@@ -66,17 +66,17 @@
         .hero-content p {
             font-size: 1.5rem;
             color: #f0f0f0;
-            animation: fadeInUp 2.5s ease-out;
+            animation: fadeInUp 2s ease-out;
         }
 
-        /* Sections and Cards */
+        /* Cards and Sections */
         .container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 25px;
             padding: 80px 20px;
-            background: linear-gradient(to bottom, #0d0d26, #16163a);
+            background: #0d0d26;
         }
 
         .event-card {
@@ -92,34 +92,9 @@
         .event-card:hover {
             transform: translateY(-15px);
             border-color: #ffd700;
-            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
         }
 
         .icon { font-size: 4rem; margin-bottom: 15px; }
-        h2 { color: #ffd700; margin-bottom: 15px; }
-
-        /* Wishes Section with Swinging Lanterns */
-        .wishes-section {
-            padding: 100px 20px;
-            background: #0d0d26;
-        }
-
-        .lantern-container {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            margin-bottom: 40px;
-        }
-
-        .lantern {
-            font-size: 5rem;
-            animation: swing 3s infinite ease-in-out;
-            text-shadow: 0 0 20px #ff4500;
-            display: inline-block;
-        }
-
-        .lantern:nth-child(2) { animation-delay: 0.5s; }
-        .lantern:nth-child(3) { animation-delay: 1s; }
 
         /* Animations */
         @keyframes fadeInDown {
@@ -132,23 +107,15 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes swing {
-            0%, 100% { transform: rotate(-12deg); }
-            50% { transform: rotate(12deg); }
-        }
-
         footer {
-            padding: 50px;
+            padding: 40px;
             background: #050517;
-            border-top: 1px solid rgba(255, 215, 0, 0.1);
             color: #888;
+            border-top: 1px solid rgba(255, 215, 0, 0.1);
         }
 
-        /* Mobile Responsive */
         @media (max-width: 768px) {
             .hero-content h1 { font-size: 2.5rem; }
-            .hero-content p { font-size: 1.1rem; }
-            .lantern { font-size: 3.5rem; }
         }
     </style>
 </head>
@@ -157,7 +124,9 @@
     <section class="hero">
         <div class="hero-overlay"></div>
         <video autoplay muted loop playsinline id="bgVideo">
-            <source src="vesak-video.mp4" type="video/mp4">
+            <!-- ඔයාගේ Direct Link එක මෙන්න -->
+            <source src="https://drive.google.com/uc?export=download&id=1rc9FVJKUHyQgQUMTPzAwKe5IsCYAufeg" type="video/mp4">
+            Your browser does not support HTML5 video.
         </video>
         <div class="hero-content">
             <h1>සම්බුදු තෙමඟුල</h1>
@@ -169,32 +138,22 @@
         <div class="event-card">
             <div class="icon">🌸</div>
             <h2>උපත</h2>
-            <p>ලුම්බිණි සල් උයනේදී සත් පියුම් මතින් වැඩම කරමින් සිදුහත් කුමරුගේ උපත සිදු විය.</p>
+            <p>ලුම්බිණි සල් උයනේදී සිදුහත් කුමරුගේ උපත සිදු විය.</p>
         </div>
         <div class="event-card">
             <div class="icon">🧘</div>
             <h2>බුදුවීම</h2>
-            <p>බුද්ධගයා බෝධි මූලයේදී සියලු කෙලෙසුන් නසා උතුම් සම්මා සම්බුද්ධත්වයට පත්වීම.</p>
+            <p>ගයා ශීර්ෂයේදී උතුම් සම්මා සම්බුද්ධත්වයට පත්වීම.</p>
         </div>
         <div class="event-card">
             <div class="icon">☸️</div>
             <h2>පිරිනිවීම</h2>
-            <p>කුසිනාරා නුවර උපවත්තන සල් උයනේදී ලොවට අනිත්‍යය පසක් කරමින් පිරිනිවන් පෑම.</p>
+            <p>කුසිනාරා නුවරදී මහා පිරිනිවන් පෑම.</p>
         </div>
     </main>
 
-    <section class="wishes-section">
-        <div class="lantern-container">
-            <div class="lantern">🏮</div>
-            <div class="lantern">🏮</div>
-            <div class="lantern">🏮</div>
-        </div>
-        <h2 style="font-size: 3rem; text-shadow: 0 0 15px #ffd700;">පින්බර වෙසක් මංගල්‍යයක් වේවා!</h2>
-        <p>සම්බුදු ගුණයෙන් මුළු ලොවම ආලෝකමත් වේවා!</p>
-    </section>
-
     <footer>
-        <p>&copy; 2026 Developed by M.U.R.D.D. Fonseka | Vesak Celebration</p>
+        <p>&copy; 2026 Developed by M.U.R.D.D. Fonseka</p>
     </footer>
 
 </body>
