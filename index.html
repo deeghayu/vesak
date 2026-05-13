@@ -10,14 +10,15 @@
         body {
             margin: 0;
             padding: 0;
-            background: #0d0d26;
+            background: #050517;
             color: #fff;
             font-family: 'Abhaya Libre', serif;
             text-align: center;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
-        /* Hero Section with Drive Video Background */
+        /* Hero Section */
         .hero {
             position: relative;
             height: 100vh;
@@ -38,6 +39,7 @@
             z-index: 0;
             transform: translate(-50%, -50%);
             object-fit: cover;
+            filter: brightness(0.6);
         }
 
         .hero-overlay {
@@ -46,7 +48,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.4);
+            background: radial-gradient(circle, transparent, #050517);
             z-index: 1;
         }
 
@@ -56,47 +58,81 @@
         }
 
         .hero-content h1 {
-            font-size: 4rem;
+            font-size: 5rem;
             color: #ffd700;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
             margin: 0;
-            animation: fadeInDown 1.5s ease-out;
+            animation: glowText 3s infinite alternate, fadeInDown 2s ease-out;
         }
 
         .hero-content p {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: #f0f0f0;
-            animation: fadeInUp 2s ease-out;
+            opacity: 0;
+            animation: fadeInUp 2s ease-out 1s forwards;
         }
 
-        /* Cards and Sections */
+        /* Floating Lanterns Animation */
+        .floating-lanterns {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Cards with Glow */
         .container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 25px;
-            padding: 80px 20px;
-            background: #0d0d26;
+            gap: 30px;
+            padding: 100px 20px;
+            background: #050517;
         }
 
         .event-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 215, 0, 0.2);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 215, 0, 0.1);
             border-radius: 20px;
-            padding: 30px;
-            width: 300px;
-            transition: 0.4s;
-            backdrop-filter: blur(10px);
+            padding: 40px;
+            width: 320px;
+            transition: all 0.5s ease;
+            backdrop-filter: blur(15px);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .event-card.show {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .event-card:hover {
-            transform: translateY(-15px);
+            transform: scale(1.05);
             border-color: #ffd700;
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.2);
+            background: rgba(255, 255, 255, 0.08);
         }
 
-        .icon { font-size: 4rem; margin-bottom: 15px; }
+        .icon { 
+            font-size: 4.5rem; 
+            margin-bottom: 20px; 
+            display: block;
+            animation: floatIcon 3s infinite ease-in-out;
+        }
 
-        /* Animations */
+        /* Animations Keyframes */
+        @keyframes glowText {
+            from { text-shadow: 0 0 20px rgba(255, 215, 0, 0.5); }
+            to { text-shadow: 0 0 40px rgba(255, 215, 0, 0.9), 0 0 10px #fff; }
+        }
+
+        @keyframes floatIcon {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
         @keyframes fadeInDown {
             from { opacity: 0; transform: translateY(-50px); }
             to { opacity: 1; transform: translateY(0); }
@@ -108,14 +144,17 @@
         }
 
         footer {
-            padding: 40px;
-            background: #050517;
-            color: #888;
-            border-top: 1px solid rgba(255, 215, 0, 0.1);
+            padding: 60px;
+            background: #02020a;
+            color: #666;
+            border-top: 1px solid rgba(255, 215, 0, 0.05);
+            font-size: 1.1rem;
         }
 
+        /* Mobile Adjustments */
         @media (max-width: 768px) {
-            .hero-content h1 { font-size: 2.5rem; }
+            .hero-content h1 { font-size: 3rem; }
+            .hero-content p { font-size: 1.3rem; }
         }
     </style>
 </head>
@@ -124,9 +163,7 @@
     <section class="hero">
         <div class="hero-overlay"></div>
         <video autoplay muted loop playsinline id="bgVideo">
-            <!-- ඔයාගේ Direct Link එක මෙන්න -->
             <source src="https://drive.google.com/uc?export=download&id=1rc9FVJKUHyQgQUMTPzAwKe5IsCYAufeg" type="video/mp4">
-            Your browser does not support HTML5 video.
         </video>
         <div class="hero-content">
             <h1>සම්බුදු තෙමඟුල</h1>
@@ -136,25 +173,42 @@
 
     <main class="container">
         <div class="event-card">
-            <div class="icon">🌸</div>
+            <span class="icon">🌸</span>
             <h2>උපත</h2>
-            <p>ලුම්බිණි සල් උයනේදී සිදුහත් කුමරුගේ උපත සිදු විය.</p>
+            <p>ලොවටම සෙත සලසමින් සිදුහත් කුමරු උපත ලැබූ ඒ අසිරිමත් මොහොත.</p>
         </div>
         <div class="event-card">
-            <div class="icon">🧘</div>
+            <span class="icon">🧘</span>
             <h2>බුදුවීම</h2>
-            <p>ගයා ශීර්ෂයේදී උතුම් සම්මා සම්බුද්ධත්වයට පත්වීම.</p>
+            <p>සියලු කෙලෙසුන් නසා සම්මා සම්බුද්ධත්වය ලැබූ ඒ උතුම් මොහොත.</p>
         </div>
         <div class="event-card">
-            <div class="icon">☸️</div>
+            <span class="icon">☸️</span>
             <h2>පිරිනිවීම</h2>
-            <p>කුසිනාරා නුවරදී මහා පිරිනිවන් පෑම.</p>
+            <p>ලෝකයට අනිත්‍යය පසක් කරමින් මහා පිරිනිවන් පෑම සිදු වූ මොහොත.</p>
         </div>
     </main>
 
     <footer>
-        <p>&copy; 2026 Developed by M.U.R.D.D. Fonseka</p>
+        <p>&copy; 2026 Developed by M.U.R.D.D. Fonseka | Ziyumi Beatz Studio</p>
     </footer>
+
+    <script>
+        // Scroll වෙද්දී Cards හෙමින් මතු වෙන්න හදපු code එක
+        const cards = document.querySelectorAll('.event-card');
+        
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        cards.forEach(card => {
+            observer.observe(card);
+        });
+    </script>
 
 </body>
 </html>
