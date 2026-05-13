@@ -48,48 +48,32 @@
             width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 2;
         }
 
-        /* Page 3 - Themaugula Facts Section */
-        .facts-page {
-            background: radial-gradient(circle, #1a1a40, #050517);
-        }
+     <!-- Page 3: Themaugula Facts -->
+<section id="facts" class="facts-page">
+    <h2 style="color: #ffd700; font-size: 2.8rem; margin-bottom: 40px; text-shadow: 0 0 15px rgba(255,215,0,0.3);">සම්බුදු තෙමඟුල</h2>
+    
+    <div class="facts-container">
+        
+        <!-- 01. උත්පත්තිය -->
+        <div class="fact-card birth" onclick="showFact('උප්පත්තිය', 'සිද්ධාර්ථ කුමාරෝත්පත්තිය ලුම්බිණි සල් උයනේදී සිදුවූයේ අද වන් පින්බර වෙසක් පුන් පොහෝ දිනකදීය.')">
+            <h3>බෝසත් කුමරුගේ උත්පත්තිය</h3>
+            <div class="view-btn">විස්තර බලන්න</div>
+        </div>
 
-        .facts-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px; width: 90%; max-width: 1100px; z-index: 5;
-        }
+        <!-- 02. බුදුවීම -->
+        <div class="fact-card enlightenment" onclick="showFact('බුදුවීම', 'වයස අවුරුදු 35 දී ගයාවේ බුද්ධගයා බෝධි මූලයේදී උතුම් වූ සම්මා සම්බුද්ධත්වයට පත්වූ සේක.')">
+            <h3>සම්මා සම්බුද්ධත්වය</h3>
+            <div class="view-btn">විස්තර බලන්න</div>
+        </div>
 
-        .fact-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 25px; border-radius: 20px;
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            text-align: center; backdrop-filter: blur(10px);
-            transition: 0.4s;
-        }
+        <!-- 03. පිරිනිවන් පෑම -->
+        <div class="fact-card parinirvana" onclick="showFact('පිරිනිවන් පෑම', 'කුසිනාරා නුවර උපවත්තන සල් උයනේදී පිරිනිවන් මංචකයෙහි සැතපී වදාළ සේක.')">
+            <h3>මහා පිරිනිවන් පෑම</h3>
+            <div class="view-btn">විස්තර බලන්න</div>
+        </div>
 
-        .fact-card:hover {
-            transform: translateY(-10px);
-            border-color: #ffd700;
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .fact-card h3 { color: #ffd700; font-size: 2rem; margin-bottom: 15px; }
-        .fact-card p { font-size: 1.2rem; line-height: 1.6; color: #ddd; }
-
-        .btn {
-            padding: 15px 35px; border-radius: 50px; border: none;
-            font-weight: bold; cursor: pointer; transition: 0.3s;
-            font-family: 'Abhaya Libre', serif; font-size: 1.2rem;
-        }
-
-        .scroll-btn { background: rgba(0,0,0,0.8); color: #ffd700; border: 2px solid #ffd700; margin-top: 20px; }
-        .music-btn { background: #ffd700; color: #050517; box-shadow: 0 0 20px rgba(255,215,0,0.4); }
-
-        footer { padding: 20px; background: #02020a; text-align: center; color: #555; font-size: 0.9rem; }
-    </style>
-</head>
-<body>
-
+    </div>
+</section>
     <!-- Page 1: Hero -->
     <section class="start-page">
         <h1 style="font-size: clamp(3rem, 10vw, 5rem); color: #ffd700; text-shadow: 0 0 20px #000; margin:0;">සිරි වෙසක් මංගල්‍යය</h1>
