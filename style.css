@@ -115,6 +115,51 @@ header h1 { color: #ffd700; font-size: 2.5rem; text-shadow: 0 0 15px #ffd700; }
     border-radius: 15px;
     box-shadow: 0 0 25px rgba(255, 215, 0, 0.3);
 }
+/* Facts Cards with Background Images */
+.fact-card {
+    position: relative;
+    height: 350px;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    transition: 0.5s;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px;
+    text-decoration: none;
+}
+
+.fact-card:hover {
+    transform: scale(1.02);
+    border-color: #ffd700;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+}
+
+/* පින්තූර දාන තැන - ඔයා පාවිච්චි කරන පින්තූර වල නම් මෙතනට දෙන්න */
+.birth { background: linear-gradient(to top, rgba(0,0,0,0.9), transparent), url('birth.jpg') center/cover; }
+.enlightenment { background: linear-gradient(to top, rgba(0,0,0,0.9), transparent), url('enlightenment.jpg') center/cover; }
+.parinirvana { background: linear-gradient(to top, rgba(0,0,0,0.9), transparent), url('parinirvana.jpg') center/cover; }
+
+.fact-card h3 {
+    color: #ffd700;
+    font-size: 1.6rem;
+    margin: 0;
+    text-shadow: 2px 2px 10px #000;
+}
+
+.view-btn {
+    margin-top: 10px;
+    background: #ffd700;
+    color: #000;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    display: inline-block;
+    width: fit-content;
+}
 
 /* Event Cards */
 .container {
