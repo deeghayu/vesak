@@ -17,7 +17,7 @@
             overflow-x: hidden;
         }
 
-        /* Hero Section with Video Background */
+        /* Hero Section */
         .hero {
             position: relative;
             height: 100vh;
@@ -54,7 +54,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(5, 5, 23, 0.6);
+            background: rgba(5, 5, 23, 0.5);
             z-index: 1;
         }
 
@@ -67,50 +67,41 @@
             font-size: 5rem;
             color: #ffd700;
             text-shadow: 0 0 30px rgba(255, 215, 0, 0.7);
-            margin-bottom: 20px;
+            margin: 0;
         }
 
-        /* Music Button Styling */
-        .music-btn {
-            background: rgba(255, 215, 0, 0.2);
+        .control-panel {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn {
+            background: rgba(255, 215, 0, 0.15);
             border: 2px solid #ffd700;
             color: #ffd700;
-            padding: 12px 25px;
-            font-size: 1.2rem;
-            border-radius: 50px;
+            padding: 10px 20px;
+            font-size: 1.1rem;
+            border-radius: 30px;
             cursor: pointer;
             transition: 0.3s;
             backdrop-filter: blur(5px);
             font-family: 'Abhaya Libre', serif;
         }
 
-        .music-btn:hover {
+        .btn:hover {
             background: #ffd700;
             color: #050517;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
         }
 
         .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 25px;
-            padding: 100px 20px;
+            padding: 80px 20px;
             background: #050517;
-        }
-
-        .event-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 215, 0, 0.2);
-            border-radius: 20px;
-            padding: 30px;
-            width: 300px;
-            transition: 0.4s;
         }
 
         footer {
             padding: 40px;
-            background: #02020a;
             color: #666;
             border-top: 1px solid rgba(255, 215, 0, 0.1);
         }
@@ -120,37 +111,34 @@
 
     <section class="hero">
         <div class="video-background">
-            <!-- Background Video: සංවේදී කවිපෙළ -->
-            <iframe id="heroVideo" src="https://www.youtube.com/embed/SBRWnqemVJU?autoplay=1&mute=1&loop=1&playlist=SBRWnqemVJU&controls=0&showinfo=0" 
-                    frameborder="0" allow="autoplay; encrypted-media"></iframe>
+            <!-- වීඩියෝව තත්පර 29 සිට පටන් ගනී (start=29) -->
+            <iframe id="vesakVideo" 
+                src="https://www.youtube.com/embed/SBRWnqemVJU?autoplay=1&mute=1&loop=1&playlist=SBRWnqemVJU&start=29&controls=0&showinfo=0" 
+                frameborder="0" allow="autoplay; encrypted-media">
+            </iframe>
         </div>
         <div class="hero-overlay"></div>
         
         <div class="hero-content">
             <h1>සම්බුදු තෙමඟුල</h1>
-            <p style="font-size: 1.5rem; margin-bottom: 30px;">වෙසක් අසිරියෙන් මුළු ලොවම ආලෝකමත් වේවා!</p>
+            <p style="font-size: 1.6rem;">තත්පර 29 සිට ඇරඹෙන පූජනීය දසුන් පෙළ...</p>
             
-            <!-- Music Toggle Button -->
-            <button class="music-btn" onclick="toggleMusic()">🎶 සින්දුව වාදනය කරන්න</button>
-            
-            <!-- Hidden Music Iframe (බුදු කරුණා දෑස තෙමී) -->
+            <div class="control-panel">
+                <!-- සින්දුව පාලනය කරන බටන් එක -->
+                <button class="btn" onclick="toggleMusic()">🎶 සින්දුව වාදනය කරන්න</button>
+            </div>
+
+            <!-- සින්දුව සඳහා රහසිගත ප්ලේයර් එකක් -->
             <div id="musicPlayer" style="display:none;"></div>
         </div>
     </section>
 
     <main class="container">
-        <div class="event-card">
-            <h2 style="color:#ffd700">උපත</h2>
-            <p>ලුම්බිණි සල් උයනේදී සිදුහත් කුමරුගේ උපත සිදු විය.</p>
-        </div>
-        <div class="event-card">
-            <h2 style="color:#ffd700">බුදුවීම</h2>
-            <p>ගයා ශීර්ෂයේදී උතුම් සම්මා සම්බුද්ධත්වයට පත්වීම.</p>
-        </div>
-        <div class="event-card">
-            <h2 style="color:#ffd700">පිරිනිවීම</h2>
-            <p>කුසිනාරා නුවරදී මහා පිරිනිවන් පෑම.</p>
-        </div>
+        <h2 style="color: #ffd700; font-size: 2.5rem;">වෙසක් පණිවිඩය</h2>
+        <p style="max-width: 800px; margin: 0 auto; line-height: 1.8; font-size: 1.2rem;">
+            ලොවට අමා ශාන්තිය උදා කළ සම්මා සම්බුදු රජාණන් වහන්සේගේ තෙමඟුල සිහිපත් කෙරෙන මේ පින්බර වෙසක් සමයේ, 
+            සැමට සාමය සහ සැනසීම උදා වේවායි පතමු.
+        </p>
     </main>
 
     <footer>
@@ -158,20 +146,21 @@
     </footer>
 
     <script>
-        let isPlaying = false;
+        let isMusicPlaying = false;
+
         function toggleMusic() {
             const playerDiv = document.getElementById('musicPlayer');
-            const btn = document.querySelector('.music-btn');
+            const btn = document.querySelector('.btn');
             
-            if (!isPlaying) {
-                // සින්දුව ලෝඩ් කිරීම (YouTube ID: 7Jw9BAZh45w)
+            if (!isMusicPlaying) {
+                // සින්දුව (බුදු කරුණා දෑස තෙමී) ලෝඩ් කිරීම
                 playerDiv.innerHTML = `<iframe width="1" height="1" src="https://www.youtube.com/embed/7Jw9BAZh45w?autoplay=1" frameborder="0" allow="autoplay"></iframe>`;
                 btn.innerHTML = "⏸️ සින්දුව නවත්වන්න";
-                isPlaying = true;
+                isMusicPlaying = true;
             } else {
                 playerDiv.innerHTML = "";
                 btn.innerHTML = "🎶 සින්දුව වාදනය කරන්න";
-                isPlaying = false;
+                isMusicPlaying = false;
             }
         }
     </script>
