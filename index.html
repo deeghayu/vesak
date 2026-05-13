@@ -17,7 +17,7 @@
 
         section { min-height: 100vh; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; }
 
-        /* Home Style */
+        /* Home Page Styling */
         .hero { background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('hero.png') center/cover; text-align: center; }
         
         .video-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
@@ -32,10 +32,12 @@
             border: 1px solid rgba(255, 215, 0, 0.3); display: flex; flex-direction: column;
             justify-content: flex-end; padding: 25px; transition: 0.4s; position: relative;
         }
-        .card:hover { transform: scale(1.03); border-color: #ffd700; }
+        .card:hover { transform: scale(1.03); border-color: #ffd700; box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); }
+        
+        /* Card Backgrounds using your files */
         .c1 { background: linear-gradient(to top, #000, transparent), url('birth.jpg') center/cover; }
-        .c2 { background: linear-gradient(to top, #000, transparent), url('enlightenment.jpg') center/cover; }
-        .c3 { background: linear-gradient(to top, #000, transparent), url('parinirvana.jpg') center/cover; }
+        .c2 { background: linear-gradient(to top, #000, transparent), url('images.jpg') center/cover; }
+        .c3 { background: linear-gradient(to top, #000, transparent), url('z_p08-Sambuddha_2.jpg') center/cover; }
 
         /* Full Screen Details Page */
         #details-page {
@@ -46,43 +48,43 @@
         }
         #details-page.active { left: 0; }
 
-        /* Banner Image in Details */
+        /* Banner in Details View */
         .details-banner {
-            width: 100%; height: 350px;
+            width: 100%; height: 400px;
             background-size: cover; background-position: center;
             position: relative; display: flex; align-items: flex-end;
-            padding: 40px; box-sizing: border-box;
+            border-bottom: 3px solid #ffd700;
         }
         .details-banner::after {
-            content: ''; position: absolute; top: 0; left: 0;
-            width: 100%; height: 100%;
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(to top, #050517, transparent);
         }
 
-        .details-content { max-width: 900px; margin: -50px auto 50px; position: relative; z-index: 10; padding: 0 20px; }
-        .details-content h1 { color: #ffd700; font-size: 3rem; margin-bottom: 20px; text-shadow: 2px 2px 10px #000; }
-        .details-content p { font-size: 1.25rem; line-height: 1.8; color: #eee; white-space: pre-line; }
+        .details-content { max-width: 850px; margin: 30px auto; position: relative; z-index: 10; padding: 0 25px; }
+        .details-content h1 { color: #ffd700; font-size: 2.8rem; margin-bottom: 20px; text-shadow: 2px 2px 10px #000; }
+        .details-content p { font-size: 1.25rem; line-height: 1.9; color: #eee; white-space: pre-line; }
         
         .back-btn {
-            position: fixed; top: 20px; left: 20px; z-index: 100;
-            background: rgba(255, 215, 0, 0.9); color: #000; padding: 10px 25px;
+            position: fixed; top: 20px; left: 20px; z-index: 1100;
+            background: #ffd700; color: #000; padding: 12px 25px;
             border: none; border-radius: 50px; font-weight: bold; cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5); font-family: 'Abhaya Libre', serif;
         }
 
         .btn { padding: 15px 35px; border-radius: 50px; border: none; cursor: pointer; font-family: 'Abhaya Libre', serif; font-size: 1.1rem; font-weight: bold; }
         .gold { background: #ffd700; color: #050517; }
         .outline { background: transparent; color: #ffd700; border: 2px solid #ffd700; margin-top: 15px; }
 
-        footer { text-align: center; padding: 40px; color: #444; }
+        footer { text-align: center; padding: 50px; color: #555; background: #02020a; }
     </style>
 </head>
 <body>
 
+    <!-- Main Section -->
     <div id="main-content">
         <section class="hero">
-            <h1 style="font-size: 4rem; color: #ffd700; margin: 0;">සිරි වෙසක් මංගල්‍යය</h1>
-            <p style="font-size: 1.5rem;">2570 පින්බර උපහාරයකි</p>
+            <h1 style="font-size: 4.5rem; color: #ffd700; margin: 0; text-shadow: 0 0 20px rgba(0,0,0,0.8);">සිරි වෙසක් මංගල්‍යය</h1>
+            <p style="font-size: 1.6rem; letter-spacing: 1px;">2570 සම්බුදු තෙමඟුල නිමිත්තෙනි</p>
             <button class="btn outline" onclick="startExperience()">නැරඹීමට පිවිසෙන්න 🔽</button>
         </section>
 
@@ -91,25 +93,28 @@
             <div class="overlay"></div>
             <div style="z-index: 5; text-align: center;">
                 <button class="btn gold" onclick="playMusic()">🎶 "බුදු කරුණා" සින්දුව අසන්න</button><br>
-                <button class="btn outline" onclick="document.getElementById('facts').scrollIntoView()">තෙමඟුලේ විස්තර 🔽</button>
+                <button class="btn outline" onclick="document.getElementById('facts').scrollIntoView()">තෙමඟුලේ විස්තර කියවන්න 🔽</button>
             </div>
             <div id="audio-box"></div>
         </section>
 
         <section id="facts" class="facts-page">
-            <h2 style="color: #ffd700; font-size: 2.5rem; margin-bottom: 40px;">සම්බුදු තෙමඟුල</h2>
+            <h2 style="color: #ffd700; font-size: 2.8rem; margin-bottom: 50px;">උතුම් සම්බුදු තෙමඟුල</h2>
             <div class="grid">
+                <!-- Card 1 -->
                 <div class="card c1" onclick="showDetails('birth')">
-                    <h3>බෝසත් කුමරුගේ උත්පත්තිය</h3>
-                    <div style="background:#ffd700; color:#000; padding:5px 15px; border-radius:20px; width:fit-content; margin-top:10px; font-weight:bold;">කියවන්න</div>
+                    <h3 style="font-size: 1.8rem; text-shadow: 2px 2px 5px #000;">බෝසත් කුමරුගේ උත්පත්තිය</h3>
+                    <div style="background:#ffd700; color:#000; padding:8px 20px; border-radius:25px; width:fit-content; font-weight:bold;">විස්තර කියවන්න</div>
                 </div>
+                <!-- Card 2 -->
                 <div class="card c2" onclick="showDetails('enlighten')">
-                    <h3>සම්මා සම්බුද්ධත්වය</h3>
-                    <div style="background:#ffd700; color:#000; padding:5px 15px; border-radius:20px; width:fit-content; margin-top:10px; font-weight:bold;">කියවන්න</div>
+                    <h3 style="font-size: 1.8rem; text-shadow: 2px 2px 5px #000;">සම්මා සම්බුද්ධත්වය</h3>
+                    <div style="background:#ffd700; color:#000; padding:8px 20px; border-radius:25px; width:fit-content; font-weight:bold;">විස්තර කියවන්න</div>
                 </div>
+                <!-- Card 3 -->
                 <div class="card c3" onclick="showDetails('death')">
-                    <h3>මහා පිරිනිවන් පෑම</h3>
-                    <div style="background:#ffd700; color:#000; padding:5px 15px; border-radius:20px; width:fit-content; margin-top:10px; font-weight:bold;">කියවන්න</div>
+                    <h3 style="font-size: 1.8rem; text-shadow: 2px 2px 5px #000;">මහා පිරිනිවන් පෑම</h3>
+                    <div style="background:#ffd700; color:#000; padding:8px 20px; border-radius:25px; width:fit-content; font-weight:bold;">විස්තර කියවන්න</div>
                 </div>
             </div>
         </section>
@@ -117,9 +122,9 @@
         <footer>Developed by M.U.R.D.D. Fonseka | Ziyumi Beat Studio 2026</footer>
     </div>
 
-    <!-- Separate View Page -->
+    <!-- Details View Page -->
     <div id="details-page">
-        <button class="back-btn" onclick="hideDetails()">⬅ ආපසු</button>
+        <button class="back-btn" onclick="hideDetails()">⬅ ආපසු පිටුවට</button>
         <div id="det-banner" class="details-banner"></div>
         <div class="details-content">
             <h1 id="det-title"></h1>
@@ -132,17 +137,17 @@
             birth: {
                 title: "බෝසත් කුමරුගේ උත්පත්තිය",
                 img: "birth.jpg",
-                text: "සිදුහත් කුමරු (සිද්ධාර්ථ) වෙසක් පුර පසළොස්වක පොහොය දිනක නේපාලයේ ලුම්බිණි සල් උයනේදී මහාමායා දේවියට සහ සුද්ධෝදන රජුට දාව උපත ලැබීය.\n\nඋපත පිළිබඳ විශේෂ තොරතුරු:\n• ස්ථානය: ලුම්බිණි සල් උයන.\n• මව: මහාමායා දේවිය | පියා: සුද්ධෝදන රජු.\n• ප්‍රධාන සිදුවීම: උපන් විගස සත් පියුමන් මතින් ඇවිද ගොස්, 'අග්ගෝ හමස්‌මි ලෝකස්‌ස' ආදී වශයෙන් සිංහනාද කළ බව සඳහන් වේ.\n• අනාවැකිය: අසිත තවුසා විසින් මෙම කුමරු සම්මා සම්බුදු කෙනෙකු වන බවට අනාවැකි පළ කළේය."
+                text: "සිදුහත් කුමරු (සිද්ධාර්ථ) වෙසක් පුර පසළොස්වක පොහොය දිනක නේපාලයේ ලුම්බිණි සල් උයනේදී මහාමායා දේවියට සහ සුද්ධෝදන රජුට දාව උපත ලැබීය.\n\n• ස්ථානය: ලුම්බිණි සල් උයන (වත්මන් නේපාලයේ රුමින්දායි).\n• මව: මහාමායා දේවිය | පියා: සුද්ධෝදන රජු.\n• ප්‍රධාන සිදුවීම: උපන් විගස සත් පියුමන් මතින් ඇවිද ගොස්, 'අග්ගෝ හමස්‌මි ලෝකස්‌ස' (ลොවට අග්‍ර වෙමි) ආදී වශයෙන් සිංහනාද කළ සේක.\n• අනාවැකිය: අසිත තවුසා විසින් මෙම කුමරු සක්විති රජෙකු හෝ සම්මා සම්බුදු කෙනෙකු වන බවට අනාවැකි පළ කළේය."
             },
             enlighten: {
                 title: "සම්මා සම්බුද්ධත්වයට පත්වීම",
-                img: "enlightenment.jpg",
-                text: "සිද්ධාර්ථ ගෞතම බෝසතාණන් වහන්සේ බුද්ධත්වයට පත්වීම බෞද්ධ ඉතිහාසයේ උත්තරීතරම සිදුවීමයි.\n\nප්‍රධාන අවස්ථා:\n• පැවිදි වීම: සංසාර දුකෙන් මිදීමේ මග සෙවීම සඳහා ගිහිගෙය හැර දා පැවිදි විය.\n• මධ්‍යම ප්‍රතිපදාව: අන්ත දෙකෙන් මිදී ආර්ය අෂ්ටාංගික මාර්ගය අනුගමනය කළහ.\n• බෝධි මූලය: නේරංජනා නදිය අසබඩ වූ ඇසතු බෝධීන් වහන්සේ යට වැඩ සිටිමින් සම්මා සම්බුද්ධත්වයට පත් වූහ.\n• මාර පරාජය: පාරමිතා බලයෙන් වසවර්ති මාරයා පරාජය කළහ."
+                img: "images.jpg",
+                text: "සිද්ධාර්ථ ගෞතම බෝසතාණන් වහන්සේ බුද්ධත්වයට පත්වීම බෞද්ධ ඉතිහාසයේ උත්තරීතරම සිදුවීමයි.\n\n• මධ්‍යම ප්‍රතිපදාව: අන්ත දෙකෙන් මිදී ආර්ය අෂ්ටාංගික මාර්ගය හෙවත් මධ්‍යම ප්‍රතිපදාව අනුගමනය කළහ.\n• බෝධි මූලය: නේරංජනා නදිය අසබඩ වූ ඇසතු බෝධීන් වහන්සේ යට වැඩ සිටිමින්, ආනාපානසති භාවනාවෙහි නිරත වූහ.\n• මාර පරාජය: පාරමිතා බලයෙන් වසවර්ති මාරයා පරාජය කළහ.\n• බුද්ධත්වය: වෙසක් පුර පසළොස්වක පොහෝ දිනක, සියලු කෙලෙසුන් නසා උතුම් සම්මා සම්බුද්ධත්වයට පත් වූහ."
             },
             death: {
                 title: "මහා පිරිනිවන් පෑම",
-                img: "parinirvana.jpg",
-                text: "බුදුරජාණන් වහන්සේ පංචස්කන්ධය හැර දමා, යලි උපතක් සිදු නොවන පරිදි සංසාර දුක සම්පූර්ණයෙන්ම නිවා දැමීම පරිනිර්වාණයයි.\n\nප්‍රධාන කරුණු:\n• ස්ථානය: කුසිනාරා නුවර උපවත්තන සල් උයන.\n• සිදුවීම: ජන්මයෙන් අසූවැන්න වූ වෙසක් පුර පසළොස්වක පොහොය දිනක අපවත් වූ සේක.\n• අවසාන බුදු වදන: 'මහණෙනි, සියලු සංස්කාර ධර්මයෝ නැසෙන සුලුය. නොපමාව කුසල් දමෙහි යෙදෙන්න.'"
+                img: "z_p08-Sambuddha_2.jpg",
+                text: "බුදුරජාණන් වහන්සේ පංචස්කන්ධය හැර දමා, යලි උපතක් සිදු නොවන පරිදි ක්ලේශයන් සහ සංසාර දුක සම්පූර්ණයෙන්ම නිවා දැමීම පරිනිර්වාණයයි.\n\n• ස්ථානය: කුසිනාරා නුවර උපවත්තන සල් උයන.\n• සිදුවීම: ජන්මයෙන් අසූවැන්න වූ වෙසක් පුර පසළොස්වක පොහෝ දින, සල් ගස් දෙකක් අතර උතුරට හිස දමා සිංහ සෙයියාවෙන් සැතපී අපවත් වූ සේක.\n• අවසාන බුදු වදන: 'මහණෙනි, සියලු සංස්කාර ධර්මයෝ නැසෙන සුලුය. නොපමාව කුසල් දමෙහි යෙදෙන්න.'"
             }
         };
 
