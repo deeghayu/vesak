@@ -30,43 +30,45 @@
             position: relative;
         }
 
-        /* 1. START PAGE - Hero Image Section */
+        /* 1. START PAGE - ඔයා එවපු ලස්සන Image එක මෙතනට */
         .start-page {
-            /* ඔයාගේ Hero Image එක මෙතනට බැක්ග්‍රවුන්ඩ් එක විදිහට දැම්මා */
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), 
-                        url('https://r.jina.ai/i/6f903820464a4b4bb2e20b60e654be07'); 
+            /* පින්තූරය GitHub එකට දාද්දී hero.png නමින් සේව් කරන්න */
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5)), 
+                        url('hero.png'); 
             background-size: cover;
             background-position: center;
             z-index: 2;
         }
 
         .start-page h1 {
-            font-size: 5rem;
+            font-size: clamp(3rem, 8vw, 5.5rem);
             color: #ffd700;
-            text-shadow: 0 0 30px rgba(0, 0, 0, 0.9);
+            text-shadow: 0 0 30px rgba(0, 0, 0, 0.9), 0 0 10px rgba(255, 215, 0, 0.5);
             margin: 0;
             animation: fadeInDown 2s ease;
         }
 
         .start-page p {
             font-size: 1.8rem;
-            text-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
-            margin-top: 10px;
+            text-shadow: 0 0 15px rgba(0, 0, 0, 1);
+            margin-top: 15px;
+            font-weight: bold;
         }
 
-        /* 2. VIDEO PAGE - YouTube Content */
+        /* 2. VIDEO PAGE - අර සංවේදී කවි පෙළ වීඩියෝ එක */
         .video-page {
-            background: linear-gradient(to bottom, #050517, #0d0d2b);
+            background: radial-gradient(circle, #0d0d2b, #050517);
         }
 
         .video-box {
-            width: 85%;
-            max-width: 900px;
+            width: 90%;
+            max-width: 950px;
             aspect-ratio: 16/9;
             border: 4px solid #ffd700;
-            border-radius: 15px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 0 50px rgba(255, 215, 0, 0.3);
+            box-shadow: 0 0 60px rgba(255, 215, 0, 0.3);
+            background: #000;
         }
 
         .video-box iframe {
@@ -74,7 +76,7 @@
             height: 100%;
         }
 
-        /* UI Elements */
+        /* Navigation & Interaction Buttons */
         .scroll-btn {
             position: absolute;
             bottom: 40px;
@@ -82,26 +84,33 @@
             text-decoration: none;
             font-size: 1.3rem;
             animation: bounce 2s infinite;
-            background: rgba(0,0,0,0.5);
-            padding: 10px 20px;
+            background: rgba(0,0,0,0.6);
+            padding: 12px 25px;
             border-radius: 50px;
+            border: 1px solid #ffd700;
+            backdrop-filter: blur(5px);
         }
 
         .play-btn {
-            margin-top: 30px;
-            background: #ffd700;
+            margin-top: 35px;
+            background: linear-gradient(45deg, #ffd700, #ffae00);
             color: #050517;
-            padding: 15px 40px;
+            padding: 16px 45px;
             border: none;
             border-radius: 50px;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: bold;
             cursor: pointer;
-            transition: 0.3s;
+            transition: 0.4s;
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
         }
 
-        .play-btn:hover { transform: scale(1.1); box-shadow: 0 0 30px #ffd700; }
+        .play-btn:hover { 
+            transform: scale(1.08); 
+            box-shadow: 0 0 40px #ffd700; 
+        }
 
+        /* Keyframes */
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
             40% {transform: translateY(-15px);}
@@ -113,45 +122,63 @@
         }
 
         footer {
-            padding: 20px;
+            padding: 25px;
             background: #02020a;
             text-align: center;
-            color: #444;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .start-page h1 { font-size: 2.8rem; }
+            .start-page p { font-size: 1.2rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- පළමු පිටුව - සිදුහත් උපත පින්තූරය සමඟ -->
+    <!-- පළමු පිටුව: පින්තූරය සමඟ ආරම්භය -->
     <section class="start-page">
         <h1>සිරි වෙසක් මංගල්‍යය</h1>
-        <p>පින්බර වෙසක් අසිරිය විඳින්න පහළට යන්න...</p>
-        <a href="#video-content" class="scroll-btn">දසුන් නැරඹීමට 🔽</a>
+        <p>සම්බුදු තෙමඟුල නිමිත්තෙන් කරන පින්බර උපහාරයකි</p>
+        <a href="#video-section" class="scroll-btn">දසුන් නැරඹීමට 🔽</a>
     </section>
 
-    <!-- දෙවැනි පිටුව - වීඩියෝව සහ මියුසික් -->
-    <section id="video-content" class="video-page">
-        <h2 style="color: #ffd700; font-size: 2.5rem; margin-bottom: 25px;">සංවේදී කවි පෙළ</h2>
+    <!-- දෙවැනි පිටුව: වීඩියෝව සහ සින්දුව -->
+    <section id="video-section" class="video-page">
+        <h2 style="color: #ffd700; font-size: 2.5rem; margin-bottom: 25px; text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);">සංවේදී කවි පෙළ</h2>
         
         <div class="video-box">
             <!-- තත්පර 29 සිට පටන් ගන්නා වීඩියෝව -->
-            <iframe src="https://www.youtube.com/embed/SBRWnqemVJU?start=29&rel=0" 
-                    frameborder="0" allowfullscreen></iframe>
+            <iframe id="vesakVideo" 
+                src="https://www.youtube.com/embed/SBRWnqemVJU?start=29&rel=0&modestbranding=1" 
+                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            </iframe>
         </div>
 
         <button class="play-btn" onclick="startMusic()">🎶 "බුදු කරුණා" ගීතය ප්ලේ කරන්න</button>
-        <div id="audio-container" style="display:none;"></div>
+        
+        <!-- සින්දුව සඳහා රහසිගත ප්ලේයර් එක -->
+        <div id="audio-player" style="display:none;"></div>
     </section>
 
     <footer>
-        <p>Created by M.U.R.D.D. Fonseka | Ziyumi Beat Studio 2026</p>
+        <p>&copy; 2026 | Developed by M.U.R.D.D. Fonseka | Ziyumi Beat Studio</p>
     </footer>
 
     <script>
         function startMusic() {
-            const container = document.getElementById('audio-container');
-            container.innerHTML = `<iframe width="1" height="1" src="https://www.youtube.com/embed/7Jw9BAZh45w?autoplay=1" frameborder="0" allow="autoplay"></iframe>`;
-            alert("අසිරිමත් වෙසක් ගීතය දැන් වාදනය වේ!");
+            const player = document.getElementById('audio-player');
+            // සින්දුව: බුදු කරුණා දෑස තෙමී
+            player.innerHTML = `<iframe width="1" height="1" src="https://www.youtube.com/embed/7Jw9BAZh45w?autoplay=1" frameborder="0" allow="autoplay"></iframe>`;
+            
+            // වීඩියෝ එක Pause කරන්න ඕනේ නම් මෙතනින් ඒක කරන්න පුළුවන්, 
+            // හැබැයි YouTube Embed එකේ ඒක කරන්න API එක ඕනේ. දැනට සින්දුව විතරක් ප්ලේ වෙන්න හැදුවා.
+            const btn = document.querySelector('.play-btn');
+            btn.innerHTML = "✨ අසිරිමත් ගීතය වාදනය වේ...";
+            btn.style.background = "#fff";
+            btn.style.color = "#050517";
         }
     </script>
 
