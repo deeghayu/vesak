@@ -15,15 +15,14 @@
             background: #050517; color: #fff;
         }
 
-        section { min-height: 100vh; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; padding: 40px 0; }
+        section { min-height: 100vh; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; padding: 60px 0; }
 
-        /* Main Background - Web Image */
         .hero { 
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1620063251781-8079d380927c?q=80&w=2070&auto=format&fit=crop') center/cover; 
             text-align: center; 
         }
 
-        .video-sec { background: #0a0a20; padding: 60px 0; }
+        .video-sec { background: #0a0a20; }
         .video-container {
             width: 90%; max-width: 800px;
             aspect-ratio: 16/9;
@@ -37,39 +36,38 @@
         iframe { width: 100%; height: 100%; border: none; }
 
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; width: 90%; max-width: 1200px; }
+        
         .card {
-            height: 450px; border-radius: 20px; overflow: hidden; cursor: pointer;
+            height: 450px; border-radius: 25px; overflow: hidden; cursor: pointer;
             border: 1px solid rgba(255, 215, 0, 0.1); display: flex; flex-direction: column;
-            justify-content: flex-end; padding: 25px; transition: 0.5s;
+            justify-content: flex-end; padding: 30px; transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
         }
-        .card:hover { transform: translateY(-15px); border-color: #ffd700; box-shadow: 0 15px 30px rgba(0,0,0,0.6); }
+        .card:hover { transform: translateY(-15px); border-color: #ffd700; box-shadow: 0 20px 40px rgba(0,0,0,0.7); }
         
-        /* Web Images for Categories */
+        /* High Quality Web Images */
         .c1 { background: linear-gradient(to top, #000, transparent), url('https://images.unsplash.com/photo-1590732158826-646e2978a313?q=80&w=2071&auto=format&fit=crop') center/cover; }
         .c2 { background: linear-gradient(to top, #000, transparent), url('https://images.unsplash.com/photo-1610427320078-4560b3780360?q=80&w=2070&auto=format&fit=crop') center/cover; }
         .c3 { background: linear-gradient(to top, #000, transparent), url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=2070&auto=format&fit=crop') center/cover; }
 
-        #details-page { position: fixed; top: 0; left: 100%; width: 100%; height: 100%; background: #050517; z-index: 1000; transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1); overflow-y: auto; }
+        #details-page { position: fixed; top: 0; left: 100%; width: 100%; height: 100%; background: #050517; z-index: 1000; transition: 0.6s; overflow-y: auto; }
         #details-page.active { left: 0; }
         .details-banner { width: 100%; height: 450px; background-size: cover; background-position: center; border-bottom: 2px solid #ffd700; }
-        .details-content { max-width: 800px; margin: -50px auto 40px; padding: 40px; background: #050517; border-radius: 20px; position: relative; box-shadow: 0 -20px 40px rgba(0,0,0,0.5); }
-        .details-content h1 { color: #ffd700; font-size: 2.8rem; margin-top: 0; }
-        .details-content p { font-size: 1.3rem; line-height: 1.8; color: #ddd; }
-
-        .btn { padding: 15px 40px; border-radius: 50px; border: none; cursor: pointer; font-weight: bold; font-family: 'Abhaya Libre', serif; font-size: 1.1rem; margin: 10px; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
-        .gold { background: #ffd700; color: #000; box-shadow: 0 5px 20px rgba(255, 215, 0, 0.2); }
+        .details-content { max-width: 800px; margin: -50px auto 40px; padding: 45px; background: #050517; border-radius: 25px; position: relative; box-shadow: 0 -20px 50px rgba(0,0,0,0.8); }
+        
+        .btn { padding: 14px 35px; border-radius: 50px; border: none; cursor: pointer; font-weight: bold; font-family: 'Abhaya Libre', serif; font-size: 1.1rem; margin: 10px; transition: 0.3s; }
+        .gold { background: #ffd700; color: #000; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3); }
         .outline { background: transparent; color: #ffd700; border: 2px solid #ffd700; }
-        .gold:hover { background: #fff; transform: translateY(-3px); }
+        .gold:hover { background: #fff; transform: scale(1.05); }
 
-        footer { text-align: center; padding: 60px; color: #555; background: #02020a; border-top: 1px solid #111; }
+        footer { text-align: center; padding: 50px; color: #444; background: #02020a; border-top: 1px solid #111; }
     </style>
 </head>
 <body>
 
     <section class="hero">
-        <h1 style="font-size: 5rem; color: #ffd700; margin-bottom: 5px; text-shadow: 0 4px 10px #000;">සිරි වෙසක් මංගල්‍යය</h1>
-        <p style="font-size: 1.8rem; letter-spacing: 2px; text-shadow: 0 2px 5px #000;">ශාන්තිනායක සම්බුදු උපහාර</p>
+        <h1 style="font-size: 4.5rem; color: #ffd700; text-shadow: 0 4px 12px #000; margin-bottom: 10px;">සිරි වෙසක් මංගල්‍යය</h1>
+        <p style="font-size: 1.6rem; letter-spacing: 1px;">අසිරිමත් සම්බුදු තෙමඟුල නිමිත්තෙනි</p>
         <div style="margin-top: 30px;">
             <button class="btn gold" onclick="playVideo()">වීඩියෝව 🎬</button>
             <button class="btn outline" onclick="document.getElementById('facts').scrollIntoView()">තොරතුරු 📖</button>
@@ -77,26 +75,26 @@
     </section>
 
     <section id="video-sec" class="video-sec">
-        <h2 style="color: #ffd700; margin-bottom: 40px; font-size: 2.5rem; letter-spacing: 1px;">අසිරිමත් වෙසක් වන්දනා</h2>
+        <h2 style="color: #ffd700; margin-bottom: 30px; font-size: 2.2rem;">වෙසක් උපහාර වන්දනා</h2>
         <div class="video-container" id="player">
-            <p style="color: #666;">වීඩියෝව නැරඹීමට බටන් එක ක්ලික් කරන්න.</p>
+            <p style="color: #555;">Play Button එක ක්ලික් කරන්න.</p>
         </div>
     </section>
 
     <section id="facts">
-        <h2 style="color: #ffd700; font-size: 2.5rem; text-align: center; margin-bottom: 50px;">සම්බුදු තෙමඟුලේ අසිරිය</h2>
+        <h2 style="color: #ffd700; font-size: 2.5rem; text-align: center; margin-bottom: 50px;">අසිරිමත් තෙමඟුල</h2>
         <div class="grid">
             <div class="card c1" onclick="showDetails('birth')">
                 <h3 style="font-size: 1.8rem; text-shadow: 2px 2px 8px #000;">උතුම් උපත</h3>
-                <span style="color:#ffd700; font-weight:bold;">වැඩිදුර කියවන්න →</span>
+                <p style="font-size: 0.9rem; color: #ffd700;">Click to learn more</p>
             </div>
             <div class="card c2" onclick="showDetails('enlighten')">
                 <h3 style="font-size: 1.8rem; text-shadow: 2px 2px 8px #000;">සම්මා සම්බුද්ධත්වය</h3>
-                <span style="color:#ffd700; font-weight:bold;">වැඩිදුර කියවන්න →</span>
+                <p style="font-size: 0.9rem; color: #ffd700;">Click to learn more</p>
             </div>
             <div class="card c3" onclick="showDetails('death')">
                 <h3 style="font-size: 1.8rem; text-shadow: 2px 2px 8px #000;">මහා පිරිනිවන් පෑම</h3>
-                <span style="color:#ffd700; font-weight:bold;">වැඩිදුර කියවන්න →</span>
+                <p style="font-size: 0.9rem; color: #ffd700;">Click to learn more</p>
             </div>
         </div>
     </section>
@@ -105,22 +103,22 @@
         <button class="btn gold" style="position:fixed; top:25px; left:25px; z-index:1100;" onclick="hideDetails()">⬅ ආපසු</button>
         <div id="det-banner" class="details-banner"></div>
         <div class="details-content">
-            <h1 id="det-title"></h1>
-            <p id="det-text"></p>
+            <h1 id="det-title" style="color: #ffd700; font-size: 2.8rem;"></h1>
+            <p id="det-text" style="font-size: 1.3rem; line-height: 1.9; color: #ddd;"></p>
         </div>
     </div>
 
     <footer>
         Developed by M.U.R.D.D. Fonseka<br>
-        <span style="font-size: 0.9rem; opacity: 0.5;">Ziyumi Beat Studio | 2026</span>
+        <span style="font-size: 0.8rem; opacity: 0.6; letter-spacing: 1px;">ZIYUMI BEAT STUDIO | 2026</span>
     </footer>
 
     <script>
         const data = {
             birth: { 
-                title: "බෝසත් කුමරුගේ උත්පත්තිය", 
+                title: "සිදුහත් කුමරුගේ උපත", 
                 img: "https://images.unsplash.com/photo-1590732158826-646e2978a313?q=80&w=2071&auto=format&fit=crop", 
-                text: "වෙසක් පුර පසළොස්වක පොහෝ දිනක සිදුහත් බෝසත් කුමරු ලුම්බිණි සල් උයනේදී ජනිත විය. එය මුළු ලෝකයාගේම ශාන්තිය පිණිස සිදු වූ උතුම් උපතකි." 
+                text: "වෙසක් පුර පසළොස්වක පොහෝ දිනක සිදුහත් කුමරු ලුම්බිණි සල් උයනේදී ජනිත විය. එය මුළු ලෝකයාගේම ශාන්තිය පිණිස සිදු වූ උතුම් උපතකි." 
             },
             enlighten: { 
                 title: "උතුම් සම්මා සම්බුද්ධත්වය", 
@@ -136,7 +134,6 @@
 
         function playVideo() {
             const player = document.getElementById('player');
-            // වීඩියෝව හරියටම තත්පර 29 සිට ආරම්භ වේ.
             player.innerHTML = `<iframe src="https://www.youtube.com/embed/SBRWnqemVJU?start=29&autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
             document.getElementById('video-sec').scrollIntoView();
         }
