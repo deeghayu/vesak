@@ -9,125 +9,108 @@
 
         body, html {
             margin: 0; padding: 0;
-            background: #0a0a0a; color: #fff;
+            background: #000; color: #fff;
             font-family: 'Abhaya Libre', serif;
-            overflow-x: hidden;
+            overflow-x: hidden; scroll-behavior: smooth;
         }
 
-        /* Animated Background - Video ekata wada speed saha lassanai */
-        .bg-overlay {
+        /* Background Video - Opacity 0.3 */
+        .video-bg {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at center, #1a1500 0%, #050505 100%);
-            z-index: -2;
+            z-index: -2; overflow: hidden;
+        }
+        .video-bg iframe {
+            position: absolute; top: 50%; left: 50%;
+            width: 100vw; height: 56.25vw; min-height: 100vh; min-width: 177.77vh;
+            transform: translate(-50%, -50%); opacity: 0.3; pointer-events: none;
         }
 
-        /* පාවෙන රන්වන් තරු (Particles) */
-        .particles {
+        .overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1; pointer-events: none;
+            background: radial-gradient(circle, transparent 20%, rgba(0,0,0,0.9) 100%);
+            z-index: -1;
         }
 
-        .container { max-width: 900px; margin: 0 auto; padding: 60px 20px; text-align: center; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 50px 20px; text-align: center; }
 
         h1 {
             font-size: clamp(2.5rem, 8vw, 4.5rem);
             color: #ffd700;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
-            margin-bottom: 5px;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+            margin: 0;
         }
 
-        .sub { font-size: 1.2rem; opacity: 0.7; letter-spacing: 2px; }
-
-        /* Main Video Player */
-        .video-container {
-            width: 100%; aspect-ratio: 16/9;
-            margin: 40px 0; border: 2px solid #ffd700;
-            border-radius: 20px; overflow: hidden;
-            box-shadow: 0 0 40px rgba(255, 215, 0, 0.15);
+        .video-main {
+            width: 100%; aspect-ratio: 16/9; margin: 40px 0;
+            border: 3px solid #ffd700; border-radius: 20px;
+            overflow: hidden; box-shadow: 0 0 50px rgba(255, 215, 0, 0.2);
         }
 
-        /* Cards Grid */
         .grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px; margin-top: 40px;
+            gap: 25px; margin-top: 50px;
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 215, 0, 0.1);
-            border-radius: 20px; padding: 20px;
-            transition: 0.4s;
+            background: rgba(15, 15, 15, 0.9); border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 20px; padding: 15px; transition: 0.4s;
         }
 
-        .card:hover {
-            transform: translateY(-10px);
-            border-color: #ffd700;
-            background: rgba(255, 215, 0, 0.05);
+        .card:hover { transform: translateY(-10px); border-color: #ffd700; }
+
+        .card img {
+            width: 100%; height: 200px; object-fit: cover;
+            border-radius: 12px; margin-bottom: 15px;
+            border: 1px solid #333;
         }
 
-        /* පින්තූර ලින්ක් මැකුණත් මේ Gradient එක ලස්සනට පේනවා */
-        .img-placeholder {
-            width: 100%; height: 180px; border-radius: 12px;
-            background: linear-gradient(45deg, #1a1a1a, #333);
-            margin-bottom: 15px; overflow: hidden;
-            display: flex; align-items: center; justify-content: center;
-        }
-
-        .img-placeholder img { width: 100%; height: 100%; object-fit: cover; }
-
-        h3 { color: #ffd700; margin-bottom: 10px; font-size: 1.5rem; }
-        p { font-size: 1rem; opacity: 0.8; line-height: 1.6; }
+        h3 { color: #ffd700; font-size: 1.6rem; margin: 10px 0; }
+        p { font-size: 1.05rem; opacity: 0.8; line-height: 1.6; }
 
         footer {
             margin-top: 60px; padding: 40px;
             border-top: 1px solid rgba(255, 215, 0, 0.1);
-            font-size: 0.85rem; opacity: 0.5;
+            font-size: 0.9rem; opacity: 0.6;
         }
     </style>
 </head>
 <body>
 
-    <div class="bg-overlay"></div>
-    <canvas id="particles" class="particles"></canvas>
+    <!-- Background YouTube Video -->
+    <div class="video-bg">
+        <iframe src="https://www.youtube.com/embed/d2FI9OfkqR0?autoplay=1&mute=1&loop=1&playlist=d2FI9OfkqR0&controls=0&rel=0" frameborder="0"></iframe>
+    </div>
+    <div class="overlay"></div>
 
     <div class="container">
         <h1>සිරි වෙසක් මංගල්‍යය</h1>
-        <div class="sub">අසිරිමත් සම්බුදු තෙමඟුල උපහාරයකි</div>
+        <p style="font-size: 1.3rem; letter-spacing: 2px;">අසිරිමත් සම්බුදු තෙමඟුල උපහාරයකි</p>
 
-        <!-- Main YouTube Video -->
-        <div class="video-container">
+        <!-- Main Video -->
+        <div class="video-main">
             <iframe width="100%" height="100%" src="https://www.youtube.com/embed/SBRWnqemVJU?start=29" frameborder="0" allowfullscreen></iframe>
         </div>
 
         <div class="grid">
-            <!-- Birth -->
+            <!-- උත්පත්තිය -->
             <div class="card">
-                <div class="img-placeholder">
-                    <img src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=400" onerror="this.style.display='none'">
-                    <span style="color:#666">උතුම් උපත</span>
-                </div>
-                <h3>උතුම් උපත</h3>
-                <p>වෙසක් පුර පසළොස්වක පොහෝ දිනක සිදු වූ සිදුහත් කුමරුගේ උපත.</p>
+                <img src="https://i.ytimg.com/vi/hduMQXJkELU/hqdefault.jpg" alt="උත්පත්තිය">
+                <h3>බෝසතුන්ගේ උත්පත්තිය</h3>
+                <p>වෙසක් පුර පසළොස්වක පොහෝ දිනක ලුම්බිණි සල් උයනේදී සිදු වූ අසිරිමත් ජනිත වීම.</p>
             </div>
 
-            <!-- Enlightenment -->
+            <!-- බුද්ධත්වය -->
             <div class="card">
-                <div class="img-placeholder">
-                    <img src="https://images.unsplash.com/photo-1590732158826-646e2978a313?w=400" onerror="this.style.display='none'">
-                    <span style="color:#666">බුද්ධත්වය</span>
-                </div>
-                <h3>බුද්ධත්වය</h3>
-                <p>සකලවිධ කෙලෙසුන් නසා උතුම් සම්මා සම්බුද්ධත්වය ලැබීම.</p>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9sWNfP1QWfxzlxtVKFtkSSEMgV-xieoE_4w&s" alt="බුද්ධත්වය">
+                <h3>උතුම් බුද්ධත්වය</h3>
+                <p>ගයා ශීර්ෂයේ බෝධි මූලයේදී සකලවිධ කෙලෙසුන් නසා බුද්ධත්වයට පත්වීම.</p>
             </div>
 
-            <!-- Parinirvana -->
+            <!-- පිරිනිවන් පෑම -->
             <div class="card">
-                <div class="img-placeholder">
-                    <img src="https://images.unsplash.com/photo-1620063251781-8079d380927c?w=400" onerror="this.style.display='none'">
-                    <span style="color:#666">පිරිනිවන් පෑම</span>
-                </div>
-                <h3>පිරිනිවන් පෑම</h3>
-                <p>කුසිනාරා නුවර උපවත්තන සල් උයනේදී මහා පිරිනිවන් පෑම.</p>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyqDaEsdklzgsFnBcB_8OMlNdkgVckCs2ZPg&s" alt="පිරිනිවන් පෑම">
+                <h3>මහා පිරිනිවන් පෑම</h3>
+                <p>කුසිනාරා නුවර උපවත්තන සල් උයනේදී මහා පිරිනිවන් මංගල්‍යය සිදු වීම.</p>
             </div>
         </div>
 
@@ -136,40 +119,5 @@
         </footer>
     </div>
 
-    <script>
-        const canvas = document.getElementById('particles');
-        const ctx = canvas.getContext('2d');
-        let dots = [];
-
-        function init() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            dots = [];
-            for(let i=0; i<60; i++) {
-                dots.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    r: Math.random() * 2,
-                    v: Math.random() * 0.5 + 0.1
-                });
-            }
-        }
-
-        function animate() {
-            ctx.clearRect(0,0, canvas.width, canvas.height);
-            ctx.fillStyle = 'rgba(255, 215, 0, 0.3)';
-            dots.forEach(d => {
-                ctx.beginPath();
-                ctx.arc(d.x, d.y, d.r, 0, Math.PI*2);
-                ctx.fill();
-                d.y -= d.v;
-                if(d.y < 0) d.y = canvas.height;
-            });
-            requestAnimationFrame(animate);
-        }
-
-        window.addEventListener('resize', init);
-        init(); animate();
-    </script>
 </body>
 </html>
