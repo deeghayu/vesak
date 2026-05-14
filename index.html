@@ -11,76 +11,71 @@
             margin: 0; padding: 0;
             width: 100%; height: 100%;
             font-family: 'Abhaya Libre', serif;
-            overflow-x: hidden; scroll-behavior: smooth;
             background: #000; color: #fff;
+            overflow-x: hidden;
         }
 
-        /* Fullscreen Background Video */
-        .video-background {
+        /* Video Background Fix */
+        .video-bg {
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
             z-index: -2;
-            overflow: hidden;
+            pointer-events: none;
         }
         
-        .video-background iframe {
+        .video-bg iframe {
+            width: 100vw;
+            height: 56.25vw;
+            min-height: 100vh;
+            min-width: 177.77vh;
             position: absolute;
             top: 50%; left: 50%;
-            width: 100vw; height: 56.25vw;
-            min-height: 100vh; min-width: 177.77vh;
             transform: translate(-50%, -50%);
-            pointer-events: none;
-            opacity: 0.5; /* වීඩියෝ එක ලාවට පේන්න */
+            opacity: 0.4;
         }
 
-        /* Overlay to make text readable */
         .overlay {
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.8));
+            background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.9));
             z-index: -1;
         }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
+        .content {
             text-align: center;
+            padding: 50px 20px;
         }
 
-        section { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 50px 0; }
-
-        .hero h1 {
-            font-size: 5rem;
+        h1 {
+            font-size: 4rem;
             color: #ffd700;
-            text-shadow: 0 0 20px rgba(0,0,0,1), 0 0 40px rgba(255, 215, 0, 0.5);
-            margin: 0;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+            margin-bottom: 10px;
         }
 
-        .main-video-box {
-            width: 100%;
+        .main-player {
             max-width: 800px;
-            aspect-ratio: 16/9;
-            border: 3px solid #ffd700;
+            margin: 40px auto;
+            border: 4px solid #ffd700;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 0 50px rgba(255, 215, 0, 0.3);
-            margin: 40px 0;
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
+            aspect-ratio: 16/9;
         }
 
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            width: 100%;
-            margin-top: 50px;
+            max-width: 1200px;
+            margin: 50px auto;
         }
 
         .card {
-            background: rgba(0, 0, 0, 0.7);
-            border: 1px solid rgba(255, 215, 0, 0.3);
+            background: rgba(20, 20, 20, 0.8);
+            border: 1px solid #ffd70033;
             border-radius: 20px;
             padding: 15px;
             transition: 0.4s;
@@ -93,90 +88,68 @@
 
         .card img {
             width: 100%;
-            height: 220px;
+            height: 250px;
             object-fit: cover;
             border-radius: 15px;
-            border: 1px solid #333;
         }
 
         .card h3 {
             color: #ffd700;
             font-size: 1.8rem;
-            margin: 15px 0 10px;
+            margin-top: 15px;
         }
-
-        .btn {
-            background: #ffd700;
-            color: #000;
-            padding: 15px 35px;
-            border-radius: 50px;
-            font-weight: bold;
-            border: none;
-            cursor: pointer;
-            text-transform: uppercase;
-            transition: 0.3s;
-        }
-
-        .btn:hover { background: #fff; transform: scale(1.05); }
 
         footer {
-            padding: 50px;
-            background: rgba(0,0,0,0.9);
-            border-top: 1px solid #ffd70033;
+            padding: 40px;
             font-size: 0.9rem;
+            opacity: 0.7;
+            border-top: 1px solid #ffd70022;
         }
     </style>
 </head>
 <body>
 
-    <!-- Background Video Layer -->
-    <div class="video-background">
-        <iframe src="https://www.youtube.com/embed/d2FI9OfkqR0?autoplay=1&mute=1&loop=1&playlist=d2FI9OfkqR0&controls=0&showinfo=0&rel=0" frameborder="0"></iframe>
+    <!-- Background Video -->
+    <div class="video-bg">
+        <iframe src="https://www.youtube.com/embed/d2FI9OfkqR0?autoplay=1&mute=1&loop=1&playlist=d2FI9OfkqR0&controls=0&rel=0&modestbranding=1" frameborder="0" allow="autoplay; encrypted-media"></iframe>
     </div>
     <div class="overlay"></div>
 
-    <div class="container">
-        <section class="hero">
-            <h1>සිරි වෙසක් මංගල්‍යය</h1>
-            <p style="font-size: 1.5rem; letter-spacing: 2px;">අසිරිමත් සම්බුදු තෙමඟුල - 2026</p>
-            <button class="btn" onclick="document.getElementById('content').scrollIntoView()">තෙමඟුල නරඹන්න</button>
-        </section>
+    <div class="content">
+        <h1>සිරි වෙසක් මංගල්‍යය</h1>
+        <p style="font-size: 1.5rem; letter-spacing: 1px;">සම්බුදු තෙමඟුල නිමිත්තෙන් කෙරෙන උපහාරයකි</p>
 
-        <section id="content">
-            <h2 style="color:#ffd700; font-size: 2.5rem; margin-bottom: 20px;">වෙසක් උපහාර</h2>
-            
-            <!-- Main Display Video -->
-            <div class="main-video-box">
-                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/SBRWnqemVJU?start=29" frameborder="0" allowfullscreen></iframe>
+        <!-- Main Video -->
+        <div class="main-player">
+            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/SBRWnqemVJU?start=29" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <!-- Themagula Images -->
+        <div class="grid">
+            <!-- Birth -->
+            <div class="card">
+                <img src="https://cdn.pixabay.com/photo/2021/04/13/05/59/buddha-6174691_1280.jpg" alt="Birth">
+                <h3>උතුම් උපත</h3>
+                <p>ලුම්බිණි සල් උයනේදී සිදු වූ සිදුහත් කුමරුගේ ජනිත වීම.</p>
             </div>
 
-            <!-- Stages Cards -->
-            <div class="grid">
-                <!-- Birth -->
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1609951651556-5334e2706168?q=80&w=1000&auto=format&fit=crop" alt="Birth">
-                    <h3>බෝසතුන්ගේ උත්පත්තිය</h3>
-                    <p>ලුම්බිණි සල් උයනේදී සිදු වූ සිදුහත් කුමරුගේ උපත.</p>
-                </div>
-
-                <!-- Enlightenment -->
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1590732158826-646e2978a313?q=80&w=1000&auto=format&fit=crop" alt="Enlightenment">
-                    <h3>සම්මා සම්බුද්ධත්වය</h3>
-                    <p>බුද්ධගයාවේ බෝධි මූලයේදී උතුම් බුද්ධත්වයට පත්වීම.</p>
-                </div>
-
-                <!-- Parinirvana -->
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1620063251781-8079d380927c?q=80&w=1000&auto=format&fit=crop" alt="Parinirvana">
-                    <h3>මහා පිරිනිවන් පෑම</h3>
-                    <p>කුසිනාරා නුවර උපවත්තන සල් උයනේදී පිරිනිවන් පෑම.</p>
-                </div>
+            <!-- Enlightenment -->
+            <div class="card">
+                <img src="https://cdn.pixabay.com/photo/2016/11/04/15/34/buddha-1798150_1280.jpg" alt="Enlightenment">
+                <h3>සම්මා සම්බුද්ධත්වය</h3>
+                <p>බුද්ධගයාවේ බෝධි මූලයේදී උතුම් සම්මා සම්බුද්ධත්වය ලැබීම.</p>
             </div>
-        </section>
+
+            <!-- Parinirvana -->
+            <div class="card">
+                <img src="https://cdn.pixabay.com/photo/2020/05/20/08/29/buddha-5194541_1280.jpg" alt="Parinirvana">
+                <h3>මහා පිරිනිවන් පෑම</h3>
+                <p>කුසිනාරා නුවරදී සියලු සංස්කාර ධර්මයන්ගෙන් වෙන්වී පිරිනිවන් පෑම.</p>
+            </div>
+        </div>
     </div>
 
-    <footer>
+    <footer align="center">
         Developed by M.U.R.D.D. Fonseka | ZIYUMI BEAT STUDIO | 2026
     </footer>
 
