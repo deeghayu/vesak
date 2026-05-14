@@ -7,222 +7,178 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;700&display=swap');
 
-        :root {
-            --gold: #ffd700;
-            --dark: #050510;
-        }
-
         body, html {
             margin: 0; padding: 0;
-            background: var(--dark);
-            color: #fff;
+            width: 100%; height: 100%;
             font-family: 'Abhaya Libre', serif;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
+            overflow-x: hidden; scroll-behavior: smooth;
+            background: #000; color: #fff;
         }
 
-        /* Animated Background Particles */
-        #bg-canvas {
+        /* Fullscreen Background Video */
+        .video-background {
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+        
+        .video-background iframe {
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 100vw; height: 56.25vw;
+            min-height: 100vh; min-width: 177.77vh;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            opacity: 0.5; /* වීඩියෝ එක ලාවට පේන්න */
+        }
+
+        /* Overlay to make text readable */
+        .overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.8));
             z-index: -1;
-            background: radial-gradient(circle at center, #1a1a3a 0%, #050510 100%);
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 0 20px;
             text-align: center;
         }
 
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(to bottom, rgba(5,5,16,0), var(--dark));
-        }
+        section { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 50px 0; }
 
         .hero h1 {
-            font-size: clamp(3rem, 10vw, 5.5rem);
-            color: var(--gold);
+            font-size: 5rem;
+            color: #ffd700;
+            text-shadow: 0 0 20px rgba(0,0,0,1), 0 0 40px rgba(255, 215, 0, 0.5);
             margin: 0;
-            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
-            animation: glow 3s infinite alternate;
         }
 
-        @keyframes glow {
-            from { text-shadow: 0 0 20px rgba(255, 215, 0, 0.4); }
-            to { text-shadow: 0 0 50px rgba(255, 215, 0, 0.8); }
-        }
-
-        /* Video Section */
-        .main-video {
-            padding: 100px 0;
-        }
-
-        .video-box {
-            position: relative;
+        .main-video-box {
             width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
+            max-width: 800px;
             aspect-ratio: 16/9;
-            border-radius: 30px;
+            border: 3px solid #ffd700;
+            border-radius: 20px;
             overflow: hidden;
-            border: 3px solid var(--gold);
-            box-shadow: 0 0 60px rgba(255, 215, 0, 0.2);
+            box-shadow: 0 0 50px rgba(255, 215, 0, 0.3);
+            margin: 40px 0;
         }
 
-        /* Cards Grid */
-        .stages-grid {
+        .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            padding: 100px 0;
-        }
-
-        .stage-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 25px;
-            padding: 20px;
-            border: 1px solid rgba(255, 215, 0, 0.1);
-            transition: 0.4s;
-            cursor: pointer;
-        }
-
-        .stage-card:hover {
-            background: rgba(255, 215, 0, 0.05);
-            transform: translateY(-10px);
-            border-color: var(--gold);
-        }
-
-        .stage-card img {
             width: 100%;
-            height: 250px;
+            margin-top: 50px;
+        }
+
+        .card {
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 20px;
+            padding: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: #ffd700;
+        }
+
+        .card img {
+            width: 100%;
+            height: 220px;
             object-fit: cover;
             border-radius: 15px;
-            margin-bottom: 20px;
-            background: #111; /* Loading placeholder */
+            border: 1px solid #333;
         }
 
-        .stage-card h3 {
-            color: var(--gold);
+        .card h3 {
+            color: #ffd700;
             font-size: 1.8rem;
-            margin: 10px 0;
+            margin: 15px 0 10px;
         }
 
         .btn {
-            background: var(--gold);
+            background: #ffd700;
             color: #000;
-            padding: 15px 40px;
+            padding: 15px 35px;
             border-radius: 50px;
-            text-decoration: none;
             font-weight: bold;
-            display: inline-block;
-            margin-top: 30px;
-            transition: 0.3s;
             border: none;
             cursor: pointer;
+            text-transform: uppercase;
+            transition: 0.3s;
         }
 
-        .btn:hover {
-            background: #fff;
-            transform: scale(1.05);
-        }
+        .btn:hover { background: #fff; transform: scale(1.05); }
 
         footer {
-            padding: 60px;
-            border-top: 1px solid rgba(255,215,0,0.1);
+            padding: 50px;
+            background: rgba(0,0,0,0.9);
+            border-top: 1px solid #ffd70033;
             font-size: 0.9rem;
-            opacity: 0.6;
         }
     </style>
 </head>
 <body>
 
-    <canvas id="bg-canvas"></canvas>
+    <!-- Background Video Layer -->
+    <div class="video-background">
+        <iframe src="https://www.youtube.com/embed/d2FI9OfkqR0?autoplay=1&mute=1&loop=1&playlist=d2FI9OfkqR0&controls=0&showinfo=0&rel=0" frameborder="0"></iframe>
+    </div>
+    <div class="overlay"></div>
 
     <div class="container">
         <section class="hero">
             <h1>සිරි වෙසක් මංගල්‍යය</h1>
-            <p style="font-size: 1.5rem; letter-spacing: 2px;">2570 වෙසක් අසිරිය</p>
-            <button class="btn" onclick="document.getElementById('video').scrollIntoView()">වීඩියෝව නරඹන්න</button>
+            <p style="font-size: 1.5rem; letter-spacing: 2px;">අසිරිමත් සම්බුදු තෙමඟුල - 2026</p>
+            <button class="btn" onclick="document.getElementById('content').scrollIntoView()">තෙමඟුල නරඹන්න</button>
         </section>
 
-        <section id="video" class="main-video">
-            <div class="video-box">
-                <iframe id="yt-player" width="100%" height="100%" src="https://www.youtube.com/embed/SBRWnqemVJU?start=29" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </section>
-
-        <section class="stages-grid">
-            <!-- උතුම් උපත -->
-            <div class="stage-card">
-                <img src="https://learn.shilpa64.lk/sayura/index.php?xi=11118&xp=" onerror="this.src='https://via.placeholder.com/400x250/111/ffd700?text=Birth+of+Lord+Buddha'">
-                <h3>උතුම් උපත</h3>
-                <p>වෙසක් පුර පසළොස්වක පොහෝ දිනක ලුම්බිණි සල් උයනේදී සිදු වූ අසිරිමත් ජනිත වීම.</p>
+        <section id="content">
+            <h2 style="color:#ffd700; font-size: 2.5rem; margin-bottom: 20px;">වෙසක් උපහාර</h2>
+            
+            <!-- Main Display Video -->
+            <div class="main-video-box">
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/SBRWnqemVJU?start=29" frameborder="0" allowfullscreen></iframe>
             </div>
 
-            <!-- බුද්ධත්වය -->
-            <div class="stage-card">
-                <img src="https://aryapatipada.org/wp-content/uploads/2023/08/Enlightenment-of-the-Buddha-600x400-1-300x200-1.jpg" onerror="this.src='https://via.placeholder.com/400x250/111/ffd700?text=Enlightenment'">
-                <h3>සම්මා සම්බුද්ධත්වය</h3>
-                <p>ගයා ශීර්ෂයේ බෝධි මූලයේදී සකලවිධ කෙලෙසුන් නසා බුද්ධත්වය ලැබීම.</p>
-            </div>
+            <!-- Stages Cards -->
+            <div class="grid">
+                <!-- Birth -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1609951651556-5334e2706168?q=80&w=1000&auto=format&fit=crop" alt="Birth">
+                    <h3>බෝසතුන්ගේ උත්පත්තිය</h3>
+                    <p>ලුම්බිණි සල් උයනේදී සිදු වූ සිදුහත් කුමරුගේ උපත.</p>
+                </div>
 
-            <!-- පිරිනිවන් පෑම -->
-            <div class="stage-card">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdn1fH_C5NGlmX-pvv4YSqZKNEb_ZH7GQnkA&s" onerror="this.src='https://via.placeholder.com/400x250/111/ffd700?text=Parinirvana'">
-                <h3>පිරිනිවන් පෑම</h3>
-                <p>කුසිනාරා නුවර උපවත්තන සල් උයනේදී මහා පිරිනිවන් මංගල්‍යය සිදු වීම.</p>
+                <!-- Enlightenment -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1590732158826-646e2978a313?q=80&w=1000&auto=format&fit=crop" alt="Enlightenment">
+                    <h3>සම්මා සම්බුද්ධත්වය</h3>
+                    <p>බුද්ධගයාවේ බෝධි මූලයේදී උතුම් බුද්ධත්වයට පත්වීම.</p>
+                </div>
+
+                <!-- Parinirvana -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1620063251781-8079d380927c?q=80&w=1000&auto=format&fit=crop" alt="Parinirvana">
+                    <h3>මහා පිරිනිවන් පෑම</h3>
+                    <p>කුසිනාරා නුවර උපවත්තන සල් උයනේදී පිරිනිවන් පෑම.</p>
+                </div>
             </div>
         </section>
     </div>
 
     <footer>
-        <p>Developed by M.U.R.D.D. Fonseka | Ziyumi Beat Studio | 2026</p>
+        Developed by M.U.R.D.D. Fonseka | ZIYUMI BEAT STUDIO | 2026
     </footer>
 
-    <script>
-        // Background Animation Script (Particles)
-        const canvas = document.getElementById('bg-canvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-
-        function init() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            particles = [];
-            for (let i = 0; i < 100; i++) {
-                particles.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    size: Math.random() * 2 + 1,
-                    speed: Math.random() * 0.5 + 0.1
-                });
-            }
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = 'rgba(255, 215, 0, 0.3)';
-            particles.forEach(p => {
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                ctx.fill();
-                p.y -= p.speed;
-                if (p.y < 0) p.y = canvas.height;
-            });
-            requestAnimationFrame(animate);
-        }
-
-        window.addEventListener('resize', init);
-        init();
-        animate();
-    </script>
 </body>
 </html>
