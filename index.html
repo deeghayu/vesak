@@ -7,144 +7,118 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;700&display=swap');
 
-        :root {
-            --gold: #ffcc00;
-            --dark-gold: #b38f00;
-        }
-
-        body {
+        body, html {
             margin: 0; padding: 0;
-            background: #050505;
-            color: #fff;
+            width: 100%; height: 100%;
             font-family: 'Abhaya Libre', serif;
+            background: #000; color: #fff;
             overflow-x: hidden;
         }
 
-        /* Animated Particle Background */
-        #bg-canvas {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            z-index: -1;
-            background: radial-gradient(circle at center, #1a1500 0%, #050505 100%);
+        /* Background Video - Opacity eka 0.3 damma lawata penna */
+        .video-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -2; overflow: hidden;
+        }
+        .video-bg iframe {
+            position: absolute; top: 50%; left: 50%;
+            width: 100vw; height: 56.25vw; min-height: 100vh; min-width: 177.77vh;
+            transform: translate(-50%, -50%); opacity: 0.3; pointer-events: none;
         }
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            text-align: center;
+        .overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle, transparent 20%, rgba(0,0,0,0.8) 100%);
+            z-index: -1;
         }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; text-align: center; }
 
         h1 {
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
-            color: var(--gold);
-            text-shadow: 0 0 20px rgba(255, 204, 0, 0.4);
-            margin-bottom: 5px;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            color: #ffd700;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+            margin-bottom: 10px;
         }
 
-        .sub-text {
-            font-size: 1.3rem;
-            letter-spacing: 3px;
-            opacity: 0.8;
-            margin-bottom: 40px;
+        .video-main {
+            width: 100%; max-width: 850px; aspect-ratio: 16/9;
+            margin: 40px auto; border: 3px solid #ffd700;
+            border-radius: 25px; overflow: hidden;
+            box-shadow: 0 0 50px rgba(255, 215, 0, 0.2);
         }
 
-        /* Video Player Box */
-        .video-wrapper {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 16/9;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 2px solid var(--dark-gold);
-            box-shadow: 0 0 40px rgba(179, 143, 0, 0.2);
-            margin-bottom: 60px;
-        }
-
-        /* Images Grid */
         .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px; margin-top: 50px;
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 204, 0, 0.1);
-            border-radius: 20px;
-            padding: 15px;
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: rgba(15, 15, 15, 0.85);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 20px; padding: 15px;
+            transition: 0.4s ease;
         }
 
         .card:hover {
             transform: translateY(-10px);
-            border-color: var(--gold);
-            background: rgba(255, 204, 0, 0.05);
+            border-color: #ffd700;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
         }
 
+        /* High Quality Fixed Image Links */
         .card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 12px;
-            filter: sepia(0.3) contrast(1.1);
+            width: 100%; height: 220px; object-fit: cover;
+            border-radius: 15px; margin-bottom: 15px;
         }
 
-        .card h3 {
-            color: var(--gold);
-            font-size: 1.6rem;
-            margin: 15px 0 10px;
-        }
-
-        .card p {
-            font-size: 1.05rem;
-            line-height: 1.6;
-            opacity: 0.8;
-        }
+        .card h3 { color: #ffd700; font-size: 1.8rem; margin: 10px 0; }
+        .card p { font-size: 1.1rem; line-height: 1.6; opacity: 0.9; }
 
         footer {
-            margin-top: 80px;
-            padding: 40px;
-            border-top: 1px solid rgba(255, 204, 0, 0.1);
-            opacity: 0.5;
-            font-size: 0.9rem;
+            margin-top: 80px; padding: 40px;
+            border-top: 1px solid rgba(255, 215, 0, 0.1);
+            font-size: 0.9rem; opacity: 0.7;
         }
     </style>
 </head>
 <body>
 
-    <canvas id="bg-canvas"></canvas>
+    <!-- Background Video (Autoplay/Mute) -->
+    <div class="video-bg">
+        <iframe src="https://www.youtube.com/embed/d2FI9OfkqR0?autoplay=1&mute=1&loop=1&playlist=d2FI9OfkqR0&controls=0&rel=0&showinfo=0" frameborder="0"></iframe>
+    </div>
+    <div class="overlay"></div>
 
     <div class="container">
         <h1>සිරි වෙසක් මංගල්‍යය</h1>
-        <div class="sub-text">සම්බුදු තෙමඟුල නිමිත්තෙන් කෙරෙන උපහාරයකි</div>
+        <p style="font-size: 1.4rem; letter-spacing: 2px;">අසිරිමත් සම්බුදු තෙමඟුල උපහාරයකි</p>
 
         <!-- Main Video -->
-        <div class="video-wrapper">
+        <div class="video-main">
             <iframe width="100%" height="100%" src="https://www.youtube.com/embed/SBRWnqemVJU?start=29" frameborder="0" allowfullscreen></iframe>
         </div>
 
         <div class="grid">
-            <!-- Birth Image -->
+            <!-- උතුම් උපත -->
             <div class="card">
-                <img src="https://www.shutterstock.com/shutterstock/photos/1963721323/display_1500/stock-photo-the-birth-of-prince-siddhartha-in-lumbini-garden-nepal-1963721323.jpg" onerror="this.src='https://picsum.photos/seed/birth/400/300'">
+                <img src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?q=80&w=600&auto=format&fit=crop" alt="Birth">
                 <h3>උතුම් උපත</h3>
-                <p>ලුම්බිණි සල් උයනේදී සිදු වූ සිදුහත් කුමරුගේ උපත.</p>
+                <p>ලුම්බිණි සල් උයනේදී සිදු වූ සිදුහත් කුමරුගේ අසිරිමත් ජනිත වීම.</p>
             </div>
 
-            <!-- Enlightenment Image -->
+            <!-- සම්මා සම්බුද්ධත්වය -->
             <div class="card">
-                <img src="https://www.shutterstock.com/shutterstock/photos/1973618693/display_1500/stock-photo-buddha-attaining-enlightenment-under-the-bodhi-tree-1973618693.jpg" onerror="this.src='https://picsum.photos/seed/enlighten/400/300'">
-                <h3>බුද්ධත්වය</h3>
-                <p>බුද්ධගයාවේදී උතුම් සම්මා සම්බුද්ධත්වය ලැබූ සේක.</p>
+                <img src="https://images.unsplash.com/photo-1590732158826-646e2978a313?q=80&w=600&auto=format&fit=crop" alt="Enlightenment">
+                <h3>සම්මා සම්බුද්ධත්වය</h3>
+                <p>බුද්ධගයාවේ බෝධි මූලයේදී සකලවිධ කෙලෙසුන් නසා බුද්ධත්වයට පත්වීම.</p>
             </div>
 
-            <!-- Parinirvana Image -->
+            <!-- මහා පිරිනිවන් පෑම -->
             <div class="card">
-                <img src="https://www.shutterstock.com/shutterstock/photos/2157582521/display_1500/stock-photo-lord-buddha-attaining-parinirvana-in-kushinagar-2157582521.jpg" onerror="this.src='https://picsum.photos/seed/nirvana/400/300'">
-                <h3>පිරිනිවන් පෑම</h3>
-                <p>කුසිනාරා නුවරදී මහා පිරිනිවන් මංගල්‍යය සිදු වීම.</p>
+                <img src="https://images.unsplash.com/photo-1620063251781-8079d380927c?q=80&w=600&auto=format&fit=crop" alt="Parinirvana">
+                <h3>මහා පිරිනිවන් පෑම</h3>
+                <p>කුසිනාරා නුවර උපවත්තන සල් උයනේදී මහා පිරිනිවන් මංගල්‍යය සිදු වීම.</p>
             </div>
         </div>
 
@@ -153,41 +127,5 @@
         </footer>
     </div>
 
-    <script>
-        // Smooth Animated Background Particles
-        const canvas = document.getElementById('bg-canvas');
-        const ctx = canvas.getContext('2d');
-        let dots = [];
-
-        function init() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            dots = [];
-            for(let i=0; i<80; i++) {
-                dots.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    r: Math.random() * 2 + 0.5,
-                    v: Math.random() * 0.3 + 0.1
-                });
-            }
-        }
-
-        function draw() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = 'rgba(255, 204, 0, 0.4)';
-            dots.forEach(d => {
-                ctx.beginPath();
-                ctx.arc(d.x, d.y, d.r, 0, Math.PI*2);
-                ctx.fill();
-                d.y -= d.v;
-                if(d.y < 0) d.y = canvas.height;
-            });
-            requestAnimationFrame(draw);
-        }
-
-        window.addEventListener('resize', init);
-        init(); draw();
-    </script>
 </body>
 </html>
